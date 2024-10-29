@@ -1,0 +1,43 @@
+{
+    "name": "sambu/ecommerce",
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "Sambu Ecommerce is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vladlen Beilik",
+            "email": "vladlen.beilik@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Sambu\\Ecommerce\\": "src/",
+            "Sambu\\Ecommerce\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Sambu\\Ecommerce\\Providers\\EcommerceServiceProvider"
+            ],
+            "aliases": {
+                "Ecommerce": "Sambu\\Ecommerce"
+            }
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.9",
+        "doctrine/dbal": "^4.2",
+        "laravel/sanctum": "^4.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
