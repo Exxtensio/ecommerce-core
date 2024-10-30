@@ -39,7 +39,7 @@ class EcommerceResponseMiddleware
                 'success' => $isSuccess,
                 'message' => $message,
                 'data' => $isSuccess && $status !== 204 ? $responseData : null,
-                'errors' => !$isSuccess ? $responseData : null,
+                'errors' => !$isSuccess ? $responseData->message : null,
             ];
 
             return response()->json($formattedResponse, $status);

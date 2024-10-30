@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\Product;
+use Sambu\Ecommerce\Resources\ProductResource;
 
 class ProductApiController extends Controller
 {
@@ -17,7 +18,16 @@ class ProductApiController extends Controller
     {
         $data = Product::all();
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            ProductResource::collection($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 
     /**
@@ -27,7 +37,17 @@ class ProductApiController extends Controller
     {
         $data = Product::create($request->all());
 
-        return response()->json($data->load(['prices', 'stocks', 'images']), 201);
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ])),
+            201
+        );
     }
 
     /**
@@ -37,7 +57,9 @@ class ProductApiController extends Controller
     {
         $data = Product::findOrFail($id);
 
-        return response()->json($data);
+        return response()->json(
+            new ProductResource($data)
+        );
     }
 
     /**
@@ -48,7 +70,9 @@ class ProductApiController extends Controller
         $data = Product::findOrFail($id);
         $data->fill($request->all())->save();
 
-        return response()->json($data);
+        return response()->json(
+            new ProductResource($data)
+        );
     }
 
     /**
@@ -57,6 +81,7 @@ class ProductApiController extends Controller
     public function destroy($id): JsonResponse
     {
         Product::destroy($id);
+
         return response()->json();
     }
 
@@ -65,7 +90,10 @@ class ProductApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        Product::withTrashed()->findOrFail($id)->restore();
+        Product::withTrashed()
+            ->findOrFail($id)
+            ->restore();
+
         return response()->json();
     }
 
@@ -75,6 +103,7 @@ class ProductApiController extends Controller
     public function forceDelete($id): JsonResponse
     {
         Product::forceDestroy($id);
+
         return response()->json();
     }
 }

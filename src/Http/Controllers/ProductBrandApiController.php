@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\ProductBrand;
+use Sambu\Ecommerce\Resources\ProductBrandResource;
 
 class ProductBrandApiController extends Controller
 {
@@ -17,17 +18,22 @@ class ProductBrandApiController extends Controller
     {
         $data = ProductBrand::all();
 
-        return response()->json($data);
+        return response()->json(
+            ProductBrandResource::collection($data)
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Requests\ProductBrand\StoreProductAttributeRequest $request): JsonResponse
+    public function store(Requests\ProductBrand\StoreProductBrandRequest $request): JsonResponse
     {
         $data = ProductBrand::create($request->all());
 
-        return response()->json($data, 201);
+        return response()->json(
+            new ProductBrandResource($data),
+            201
+        );
     }
 
     /**
@@ -37,18 +43,22 @@ class ProductBrandApiController extends Controller
     {
         $data = ProductBrand::findOrFail($id);
 
-        return response()->json($data);
+        return response()->json(
+            new ProductBrandResource($data)
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Requests\ProductBrand\UpdateProductAttributeRequest $request, $id): JsonResponse
+    public function update(Requests\ProductBrand\UpdateProductBrandRequest $request, $id): JsonResponse
     {
         $data = ProductBrand::findOrFail($id);
         $data->fill($request->all())->save();
 
-        return response()->json($data);
+        return response()->json(
+            new ProductBrandResource($data)
+        );
     }
 
     /**
@@ -57,6 +67,7 @@ class ProductBrandApiController extends Controller
     public function destroy($id): JsonResponse
     {
         ProductBrand::destroy($id);
+
         return response()->json();
     }
 
@@ -65,7 +76,10 @@ class ProductBrandApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductBrand::withTrashed()->findOrFail($id)->restore();
+        ProductBrand::withTrashed()
+            ->findOrFail($id)
+            ->restore();
+
         return response()->json();
     }
 
@@ -75,6 +89,7 @@ class ProductBrandApiController extends Controller
     public function forceDelete($id): JsonResponse
     {
         ProductBrand::forceDestroy($id);
+
         return response()->json();
     }
 }

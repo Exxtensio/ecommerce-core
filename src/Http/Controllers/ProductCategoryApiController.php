@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\ProductCategory;
+use Sambu\Ecommerce\Resources\ProductCategoryResource;
 
 class ProductCategoryApiController extends Controller
 {
@@ -17,7 +18,9 @@ class ProductCategoryApiController extends Controller
     {
         $data = ProductCategory::all();
 
-        return response()->json($data);
+        return response()->json(
+            ProductCategoryResource::collection($data)
+        );
     }
 
     /**
@@ -27,7 +30,10 @@ class ProductCategoryApiController extends Controller
     {
         $data = ProductCategory::create($request->all());
 
-        return response()->json($data, 201);
+        return response()->json(
+            new ProductCategoryResource($data),
+            201
+        );
     }
 
     /**
@@ -37,7 +43,9 @@ class ProductCategoryApiController extends Controller
     {
         $data = ProductCategory::findOrFail($id);
 
-        return response()->json($data);
+        return response()->json(
+            new ProductCategoryResource($data)
+        );
     }
 
     /**
@@ -48,7 +56,9 @@ class ProductCategoryApiController extends Controller
         $data = ProductCategory::findOrFail($id);
         $data->fill($request->all())->save();
 
-        return response()->json($data);
+        return response()->json(
+            new ProductCategoryResource($data)
+        );
     }
 
     /**
@@ -57,6 +67,7 @@ class ProductCategoryApiController extends Controller
     public function destroy($id): JsonResponse
     {
         ProductCategory::destroy($id);
+
         return response()->json();
     }
 
@@ -65,7 +76,10 @@ class ProductCategoryApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductCategory::withTrashed()->findOrFail($id)->restore();
+        ProductCategory::withTrashed()
+            ->findOrFail($id)
+            ->restore();
+
         return response()->json();
     }
 
@@ -75,6 +89,7 @@ class ProductCategoryApiController extends Controller
     public function forceDelete($id): JsonResponse
     {
         ProductCategory::forceDestroy($id);
+
         return response()->json();
     }
 }

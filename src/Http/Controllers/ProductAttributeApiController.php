@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\ProductAttribute;
+use Sambu\Ecommerce\Resources\ProductAttributeResource;
 
 class ProductAttributeApiController extends Controller
 {
@@ -17,7 +18,9 @@ class ProductAttributeApiController extends Controller
     {
         $data = ProductAttribute::all();
 
-        return response()->json($data);
+        return response()->json(
+            ProductAttributeResource::collection($data)
+        );
     }
 
     /**
@@ -27,7 +30,10 @@ class ProductAttributeApiController extends Controller
     {
         $data = ProductAttribute::create($request->all());
 
-        return response()->json($data, 201);
+        return response()->json(
+            new ProductAttributeResource($data),
+            201
+        );
     }
 
     /**
@@ -37,7 +43,9 @@ class ProductAttributeApiController extends Controller
     {
         $data = ProductAttribute::findOrFail($id);
 
-        return response()->json($data);
+        return response()->json(
+            new ProductAttributeResource($data)
+        );
     }
 
     /**
@@ -48,7 +56,9 @@ class ProductAttributeApiController extends Controller
         $data = ProductAttribute::findOrFail($id);
         $data->fill($request->all())->save();
 
-        return response()->json($data);
+        return response()->json(
+            new ProductAttributeResource($data)
+        );
     }
 
     /**
@@ -57,6 +67,7 @@ class ProductAttributeApiController extends Controller
     public function destroy($id): JsonResponse
     {
         ProductAttribute::destroy($id);
+
         return response()->json();
     }
 
@@ -65,7 +76,10 @@ class ProductAttributeApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductAttribute::withTrashed()->findOrFail($id)->restore();
+        ProductAttribute::withTrashed()
+            ->findOrFail($id)
+            ->restore();
+
         return response()->json();
     }
 
@@ -75,6 +89,7 @@ class ProductAttributeApiController extends Controller
     public function forceDelete($id): JsonResponse
     {
         ProductAttribute::forceDestroy($id);
+
         return response()->json();
     }
 }

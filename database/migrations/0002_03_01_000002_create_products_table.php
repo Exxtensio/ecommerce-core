@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create(app('ecommerce')->getProductTable(), function (Blueprint $table) {
             $table->ecommercePrimary();
             $table->ecommerceRelation('product_brand', true, true);
-            $table->char('type', 1);
-            $table->char('unit', 12);
+            $table->char('type', 3);
+            $table->char('unit', 9);
             $table->integer('step')->default(1);
 
             $table->string('name');

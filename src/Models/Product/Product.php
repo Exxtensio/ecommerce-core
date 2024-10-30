@@ -2,7 +2,6 @@
 
 namespace Sambu\Ecommerce\Models\Product;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations;
 
 /*
@@ -13,11 +12,11 @@ use Illuminate\Database\Eloquent\Relations;
 | This option defines the product type.
 |
 | Available types: "digital", "quantity" (default), "weight", "volume", "length"
-| Digital ("d"): product that involves downloading some content
-| Quantity ("q"): quantitative product
-| Weight ("w"): weight product
-| Volume ("v"): liquid
-| Length ("l"): product that is measured by length
+| Digital ("dig"): product that involves downloading some content
+| Quantity ("qty"): quantitative product
+| Weight ("wt"): weight product
+| Volume ("vol"): liquid
+| Length ("len"): product that is measured by length
 |
 |---------------------------------------------------------------------------------
 | Digital & Quantity Unit
@@ -57,11 +56,11 @@ use Illuminate\Database\Eloquent\Relations;
 */
 class Product extends AbstractProductModel
 {
-    const TYPE_DIGITAL = 'd', TYPE_QUANTITY = 'q',
-        TYPE_WEIGHT = 'w', TYPE_VOLUME = 'v',
-        TYPE_LENGTH = 'l';
+    const TYPE_DIGITAL = 'dig', TYPE_QUANTITY = 'qty',
+        TYPE_WEIGHT = 'wt', TYPE_VOLUME = 'vol',
+        TYPE_LENGTH = 'len';
 
-    const DEFAULT_TYPE = 'q', DEFAULT_QUANTITY_UNIT = 'o',
+    const DEFAULT_TYPE = 'qty', DEFAULT_QUANTITY_UNIT = 'o',
         DEFAULT_DIGITAL_UNIT = 'o', DEFAULT_WEIGHT_UNIT = 'kg',
         DEFAULT_VOLUME_UNIT = 'l', DEFAULT_LENGTH_UNIT = 'm';
 
@@ -69,6 +68,43 @@ class Product extends AbstractProductModel
         WEIGHT_UNITS = ['mt','t','kg','g','mg','mcg','lt','st','lb','oz','dr','gr','ct'],
         VOLUME_UNITS = ['m3','l','ml','cm3','dm3','ft3','in3','imp-gal','gal','imp-qt','qt','imp-pt','pt','imp-fl-oz','fl-oz'],
         LENGTH_UNITS = ['km','m','cm','mm','mcm','nm','mi','yd','ft','in','nmi'];
+
+    const ACRONYM = [
+        'dig' => 'digital',
+        'qty' => 'quantity',
+        'wt' => 'weight',
+        'vol' => 'volume',
+        'len' => 'length',
+        'o' => 'one',
+        'mt' => 'metric ton',
+        't' => 'ton',
+        'kg' => 'kilogram',
+        'g' => 'gram',
+        'mg' => 'milligram',
+        'mcg' => 'microgram',
+        'lt' => 'long ton',
+        'st' => 'short ton',
+        'lb' => 'pound',
+        'oz' => 'ounce',
+        'dr' => 'dram',
+        'gr' => 'grain',
+        'ct' => 'carat',
+        'm3' => 'cubic meter',
+        'l' => 'liter',
+        'ml' => 'milliliter',
+        'cm3' => 'cubic centimeter',
+        'dm3' => 'cubic decimeter',
+        'ft3' => 'cubic foot',
+        'in3' => 'cubic inch',
+        'imp-gal' => 'imperial gallon',
+        'gal' => 'gallon',
+        'imp-qt' => 'imperial quart',
+        'qt' => 'quart',
+        'imp-pt' => 'imperial pint',
+        'pt' => 'pint',
+        'imp-fl-oz' => 'imperial fluid ounce',
+        'fl-oz' => 'fluid ounce',
+    ];
 
     protected $fillable = [
         'product_brand_id',
@@ -86,15 +122,7 @@ class Product extends AbstractProductModel
     ];
 
     protected $casts = [
-        'step' => 'integer',
-        'default_price' => 'decimal',
-        'default_stock' => 'decimal',
-    ];
-
-    protected $with = [
-        'prices',
-        'stocks',
-        'images',
+        'step' => 'integer'
     ];
 
     public function brand(): Relations\BelongsTo
