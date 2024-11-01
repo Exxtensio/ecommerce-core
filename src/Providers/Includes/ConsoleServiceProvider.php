@@ -30,12 +30,13 @@ class ConsoleServiceProvider extends ServiceProvider
             $schedule = $this->app->make(Schedule::class);
             if($this->app->environment('production')) {
 
-                if(config('ecommerce.rateUpdateFrequency') === 'daily') {
-                    $schedule->command('ecommerce:update-currency-rates')->daily();
-                } else if (config('ecommerce.rateUpdateFrequency') === 'weekly') {
-                    $schedule->command('ecommerce:update-currency-rates')->weekly();
+                if(!empty(config('ecommerce.exchangerateApiKey'))) {
+                    if(config('ecommerce.rateUpdateFrequency') === 'daily') {
+                        $schedule->command('ecommerce:update-currency-rates')->daily();
+                    } else if (config('ecommerce.rateUpdateFrequency') === 'weekly') {
+                        $schedule->command('ecommerce:update-currency-rates')->weekly();
+                    }
                 }
-
             }
         });
     }

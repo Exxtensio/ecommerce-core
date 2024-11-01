@@ -121,10 +121,6 @@ class Product extends AbstractProductModel
         'image',
     ];
 
-    protected $casts = [
-        'step' => 'integer'
-    ];
-
     public function brand(): Relations\BelongsTo
     {
         $singular = app('ecommerce')::getProductBrandTable(true);

@@ -46,7 +46,7 @@ return [
         'product_stock_table' => [
             'name' => 'product_stocks',
             'stock_decimal_total' => 8,
-            'stock_decimal_places' => 2,
+            'stock_decimal_places' => 1,
         ],
         'product_image_table' => [
             'name' => 'product_images'
@@ -105,5 +105,5 @@ return [
     | Available frequencies: "daily", "weekly",
     |
     */
-    'rateUpdateFrequency' => env('ECOMMERCE_RATE_UPDATE_FREQUENCY', 'daily'),
+    'rateUpdateFrequency' => env('ECOMMERCE_RATE_UPDATE_FREQUENCY', 'weekly'),
 ];

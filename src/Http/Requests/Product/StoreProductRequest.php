@@ -51,9 +51,9 @@ class StoreProductRequest extends FormRequest
         $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
         return [
             'product_brand_id' => ['nullable',"exists:$brandTable,id"],
-            'type' => ['nullable', "in:dig,qty,wt,vol,len"],
+            'type' => ['nullable', 'in:dig,qty,wt,vol,len'],
             'unit' => ['nullable', $this->getUnitInRules()],
-            'step' => ['nullable', 'integer'],
+            'step' => ['nullable', 'decimal:1'],
             'name' => ['required', 'string', 'max:255', "unique:$table,name"],
             'slug' => ['required', 'string', 'max:255', "unique:$table,slug"],
             'summary' => ['nullable', 'string', 'max:255'],

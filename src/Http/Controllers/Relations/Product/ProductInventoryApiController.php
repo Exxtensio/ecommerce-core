@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\Product;
+use Sambu\Ecommerce\Resources\ProductResource;
 
 class ProductInventoryApiController extends Controller
 {
@@ -33,7 +34,16 @@ class ProductInventoryApiController extends Controller
             ]);
         }
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 
     public function update(Requests\ProductInventory\UpdateProductInventoryRequest $request, $id): JsonResponse
@@ -52,16 +62,34 @@ class ProductInventoryApiController extends Controller
                 ->update(['stock' => $request->get('stock')]);
         }
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 
-    public function destroy(Requests\ProductInventory\DeleteProductInventoryRequest $request, $id, $country): JsonResponse
+    public function destroy(Requests\ProductInventory\DeleteProductInventoryRequest $request, $id): JsonResponse
     {
         $data = Product::findOrFail($id);
 
-        $data->prices()->where('country', $country)->delete();
-        $data->stocks()->where('country', $country)->delete();
+        $data->prices()->where('country', $request->get('country'))->delete();
+        $data->stocks()->where('country', $request->get('country'))->delete();
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 }

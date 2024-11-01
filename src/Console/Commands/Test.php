@@ -3,7 +3,6 @@
 namespace Sambu\Ecommerce\Console\Commands;
 
 use Illuminate\Console\Command;
-use Sambu\Ecommerce\Models\Product\ProductCategory;
 
 class Test extends Command
 {

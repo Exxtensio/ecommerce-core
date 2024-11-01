@@ -77,7 +77,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
         ->group(function () {
             Route::post('{id}/product-inventory', 'store')->name('store.product-inventory');
             Route::patch('{id}/product-inventory', 'update')->name('update.product-inventory');
-            Route::delete('{id}/product-inventory/{country}', 'destroy')->name('destroy.product-inventory');
+            Route::delete('{id}/product-inventory', 'destroy')->name('destroy.product-inventory');
         });
 
     Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductImageApiController::class)

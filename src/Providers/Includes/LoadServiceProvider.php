@@ -16,10 +16,5 @@ class LoadServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../../database/migrations');
     }
 
-    public function boot(): void
-    {
-        $this->publishes([
-            __DIR__.'/../../../config/ecommerce.php' => config_path('ecommerce.php'),
-        ], 'config');
-    }
+    public function boot(): void {}
 }

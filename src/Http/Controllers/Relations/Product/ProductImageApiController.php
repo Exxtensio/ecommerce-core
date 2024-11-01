@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\Product;
+use Sambu\Ecommerce\Resources\ProductResource;
 
 class ProductImageApiController extends Controller
 {
@@ -42,7 +43,16 @@ class ProductImageApiController extends Controller
             ]);
         }
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 
     public function destroy($id, $imageId): JsonResponse
@@ -52,6 +62,15 @@ class ProductImageApiController extends Controller
             ->where('id', $imageId)
             ->delete();
 
-        return response()->json($data->load(['prices', 'stocks', 'images']));
+        return response()->json(
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
+        );
     }
 }

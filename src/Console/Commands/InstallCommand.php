@@ -3,7 +3,6 @@
 namespace Sambu\Ecommerce\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 use Laravel\Sanctum\PersonalAccessToken;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -31,7 +30,10 @@ class InstallCommand extends Command
         $this->callSilently('db:seed', ['--class' => \Sambu\Ecommerce\Database\Seeders\DefaultSeeder::class]);
         $bar->advance();
 
-        $artisan = \Sambu\Ecommerce\Models\Artisan::where('name', config('ecommerce.artisan.name'))->where('email', config('ecommerce.artisan.email'))->first();
+        $artisan = \Sambu\Ecommerce\Models\Artisan::where('name', config('ecommerce.artisan.name'))
+            ->where('email', config('ecommerce.artisan.email'))
+            ->first();
+
         PersonalAccessToken::where('name', 'artisan')->delete();
 
         $token = $artisan->createToken('artisan');
@@ -40,7 +42,7 @@ class InstallCommand extends Command
 
         $this->newLine();
         $this->warn("\nCongratulations!");
-        $this->info("Laravel Ecommerce add-on installation is complete");
+        $this->info("Laravel eCommerce add-on installation is complete");
 
         $table = new Table($this->output);
         $table->setHeaders(['Key', 'Value']);

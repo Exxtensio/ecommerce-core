@@ -58,7 +58,14 @@ class ProductApiController extends Controller
         $data = Product::findOrFail($id);
 
         return response()->json(
-            new ProductResource($data)
+            new ProductResource($data->load([
+                'prices',
+                'stocks',
+                'images',
+                'brand',
+                'categories',
+                'attributes'
+            ]))
         );
     }
 
