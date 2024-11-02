@@ -8,7 +8,7 @@ use Exception;
 
 class Ecommerce extends Facade
 {
-    use Traits\HasTypeCorrect, Traits\HasArtisanUser, Traits\HasTables;
+    use Traits\HasTypeCorrect, Traits\HasArtisanUser, Traits\HasTables, Traits\HasRelationColumns;
 
     public function __invoke($request, $next) {}
 

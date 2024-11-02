@@ -19,14 +19,7 @@ class ProductApiController extends Controller
         $data = Product::all();
 
         return response()->json(
-            ProductResource::collection($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            ProductResource::collection($data)
         );
     }
 
@@ -38,14 +31,7 @@ class ProductApiController extends Controller
         $data = Product::create($request->all());
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ])),
+            new ProductResource($data),
             201
         );
     }
@@ -58,14 +44,7 @@ class ProductApiController extends Controller
         $data = Product::findOrFail($id);
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 

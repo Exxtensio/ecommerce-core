@@ -44,14 +44,7 @@ class ProductImageApiController extends Controller
         }
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 
@@ -63,14 +56,7 @@ class ProductImageApiController extends Controller
             ->delete();
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 }

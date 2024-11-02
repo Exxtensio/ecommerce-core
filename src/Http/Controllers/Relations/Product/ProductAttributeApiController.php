@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models\Product\Product;
+use Sambu\Ecommerce\Resources\ProductResource;
 
 class ProductAttributeApiController extends Controller
 {
@@ -14,7 +15,9 @@ class ProductAttributeApiController extends Controller
         $data = Product::findOrFail($request->route('id'));
         $data->attributes()->sync($request->get('relations'));
 
-        return response()->json($data->load('attributes'));
+        return response()->json(
+            new ProductResource($data)
+        );
     }
 
     public function detach(Requests\Relations\Product\DetachProductAttributeRequest $request): JsonResponse
@@ -22,6 +25,8 @@ class ProductAttributeApiController extends Controller
         $data = Product::findOrFail($request->route('id'));
         $data->attributes()->detach($request->get('relations'));
 
-        return response()->json($data->load('attributes'));
+        return response()->json(
+            new ProductResource($data)
+        );
     }
 }

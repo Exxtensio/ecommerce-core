@@ -16,14 +16,7 @@ class ProductCategoryApiController extends Controller
         $data->categories()->sync($request->get('relations'));
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 
@@ -33,14 +26,7 @@ class ProductCategoryApiController extends Controller
         $data->categories()->detach($request->get('relations'));
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 }

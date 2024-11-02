@@ -55,6 +55,17 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
+    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductReviewApiController::class)
+        ->prefix('product-reviews')
+        ->name('product-reviews.')
+        ->group(function () {
+            Route::post('', 'store')->name('store');
+            Route::patch('{id}', 'update')->name('update');
+            Route::delete('{id}', 'destroy')->name('destroy');
+            Route::patch('{id}/restore', 'restore')->name('restore');
+            Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
+        });
+
     Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductCategoryApiController::class)
         ->prefix('products')
         ->name('products.')

@@ -4,9 +4,13 @@ namespace Sambu\Ecommerce\Models\Product;
 
 class ProductPrice extends AbstractProductModel
 {
-    protected $fillable = [
-        'product_id',
-        'country',
-        'price',
-    ];
+    public function __construct(array $attributes = [])
+    {
+        $this->fillable = [
+            app('ecommerce')::getProductId(),
+            'country',
+            'price',
+        ];
+        parent::__construct($attributes);
+    }
 }

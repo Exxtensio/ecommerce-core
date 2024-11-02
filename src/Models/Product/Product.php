@@ -106,25 +106,38 @@ class Product extends AbstractProductModel
         'fl-oz' => 'fluid ounce',
     ];
 
-    protected $fillable = [
-        'product_brand_id',
-        'type',
-        'unit',
-        'step',
-        'name',
-        'slug',
-        'summary',
-        'description',
-        'status',
-        'price',
-        'stock',
-        'image',
+    public function __construct(array $attributes = [])
+    {
+        $this->fillable = [
+            app('ecommerce')::getProductBrandId(),
+            'type',
+            'unit',
+            'step',
+            'name',
+            'slug',
+            'summary',
+            'description',
+            'status',
+            'price',
+            'stock',
+            'image',
+        ];
+        parent::__construct($attributes);
+    }
+
+    protected $with = [
+        'prices',
+        'stocks',
+        'images',
+        'brand',
+        'categories',
+        'attributes',
+        'reviews'
     ];
 
     public function brand(): Relations\BelongsTo
     {
-        $singular = app('ecommerce')::getProductBrandTable(true);
-        return $this->belongsTo(ProductBrand::class, "{$singular}_id");
+        return $this->belongsTo(ProductBrand::class, app('ecommerce')::getProductBrandId());
     }
 
     public function categories(): Relations\BelongsToMany
@@ -145,19 +158,21 @@ class Product extends AbstractProductModel
 
     public function images(): Relations\HasMany
     {
-        $singular = app('ecommerce')::getProductTable(true);
-        return $this->hasMany(ProductImage::class, "{$singular}_id");
+        return $this->hasMany(ProductImage::class, app('ecommerce')::getProductId());
     }
 
     public function prices(): Relations\HasMany
     {
-        $singular = app('ecommerce')::getProductTable(true);
-        return $this->hasMany(ProductPrice::class, "{$singular}_id");
+        return $this->hasMany(ProductPrice::class, app('ecommerce')::getProductId());
     }
 
     public function stocks(): Relations\HasMany
     {
-        $singular = app('ecommerce')::getProductTable(true);
-        return $this->hasMany(ProductStock::class, "{$singular}_id");
+        return $this->hasMany(ProductStock::class, app('ecommerce')::getProductId());
+    }
+
+    public function reviews(): Relations\HasMany
+    {
+        return $this->hasMany(ProductReview::class, app('ecommerce')::getProductId());
     }
 }

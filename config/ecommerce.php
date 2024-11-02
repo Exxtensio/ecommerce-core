@@ -34,6 +34,12 @@ return [
         'product_category_table' => [
             'name' => 'product_categories'
         ],
+        'product_attribute_table' => [
+            'name' => 'product_attributes'
+        ],
+        'product_review_table' => [
+            'name' => 'product_reviews'
+        ],
         'product_table' => [
             'name' => 'products',
             'status_default' => 'active',
@@ -50,9 +56,6 @@ return [
         ],
         'product_image_table' => [
             'name' => 'product_images'
-        ],
-        'product_attribute_table' => [
-            'name' => 'product_attributes'
         ],
         'order_table' => [
             'name' => 'orders',

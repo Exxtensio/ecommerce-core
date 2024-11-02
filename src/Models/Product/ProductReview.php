@@ -2,14 +2,15 @@
 
 namespace Sambu\Ecommerce\Models\Product;
 
-class ProductStock extends AbstractProductModel
+class ProductReview extends AbstractProductModel
 {
     public function __construct(array $attributes = [])
     {
         $this->fillable = [
+            'user_id',
             app('ecommerce')::getProductId(),
-            'country',
-            'stock',
+            'rating',
+            'comment',
         ];
         parent::__construct($attributes);
     }

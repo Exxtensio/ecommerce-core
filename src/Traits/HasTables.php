@@ -42,6 +42,12 @@ trait HasTables
         return config('ecommerce.migration.product_attribute_table.name');
     }
 
+    public static function getProductReviewTable($singular = false)
+    {
+        if($singular) return Str::singular(config('ecommerce.migration.product_review_table.name'));
+        return config('ecommerce.migration.product_review_table.name');
+    }
+
     public static function getProductImageTable($singular = false)
     {
         if($singular) return Str::singular(config('ecommerce.migration.product_image_table.name'));

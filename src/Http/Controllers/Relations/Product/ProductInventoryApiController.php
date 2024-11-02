@@ -35,14 +35,7 @@ class ProductInventoryApiController extends Controller
         }
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 
@@ -63,14 +56,7 @@ class ProductInventoryApiController extends Controller
         }
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 
@@ -82,14 +68,7 @@ class ProductInventoryApiController extends Controller
         $data->stocks()->where('country', $request->get('country'))->delete();
 
         return response()->json(
-            new ProductResource($data->load([
-                'prices',
-                'stocks',
-                'images',
-                'brand',
-                'categories',
-                'attributes'
-            ]))
+            new ProductResource($data)
         );
     }
 }

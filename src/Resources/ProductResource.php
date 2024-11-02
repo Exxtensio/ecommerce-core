@@ -8,6 +8,16 @@ use Sambu\Ecommerce\Models\Product\Product;
 
 class ProductResource extends JsonResource
 {
+    public $with = [
+        'prices',
+        'stocks',
+        'images',
+        'brand',
+        'categories',
+        'attributes',
+        'reviews'
+    ];
+
     /**
      * @return array<string, mixed>
      */
@@ -43,6 +53,7 @@ class ProductResource extends JsonResource
             'brand' => new ProductBrandResource($this->whenLoaded('brand')),
             'categories' => ProductCategoryResource::collection($this->whenLoaded('categories')),
             'attributes' => ProductAttributeResource::collection($this->whenLoaded('attributes')),
+            'reviews' => ProductReviewResource::collection($this->whenLoaded('reviews')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

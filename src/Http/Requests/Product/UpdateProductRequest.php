@@ -38,12 +38,13 @@ class UpdateProductRequest extends FormRequest
     {
         $table = app('ecommerce')::getProductTable();
         $brandTable = app('ecommerce')::getProductBrandTable();
+        $productBrandId = app('ecommerce')::getProductBrandId();
         $pricePlace = config('ecommerce.migration.product_price_table.price_decimal_places');
         $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
         $id = $this->route('id');
 
         return [
-            'product_brand_id' => ['nullable',"exists:$brandTable,id"],
+            $productBrandId => ['nullable',"exists:$brandTable,id"],
             'type' => ['nullable', 'in:dig,qty,wt,vol,len'],
             'unit' => ['sometimes', 'required_with:type', $this->getUnitInRules()],
             'step' => ['nullable', 'decimal:1'],
