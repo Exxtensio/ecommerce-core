@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models\Product\Product;
-use Sambu\Ecommerce\Resources\ProductResource;
+use Sambu\Ecommerce\Models;
+use Sambu\Ecommerce\Resources;
 
 class ProductApiController extends Controller
 {
@@ -16,10 +16,10 @@ class ProductApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $data = Product::all();
+        $data = Models\Product\Product::all();
 
         return response()->json(
-            ProductResource::collection($data)
+            Resources\ProductResource::collection($data)
         );
     }
 
@@ -28,10 +28,11 @@ class ProductApiController extends Controller
      */
     public function store(Requests\Product\StoreProductRequest $request): JsonResponse
     {
-        $data = Product::create($request->all());
+        $data = Models\Product\Product::create($request->all());
+        $data = Models\Product\Product::find($data->id);
 
         return response()->json(
-            new ProductResource($data),
+            new Resources\ProductResource($data->load(['prices', 'images', 'stocks'])),
             201
         );
     }
@@ -41,10 +42,10 @@ class ProductApiController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $data = Product::findOrFail($id);
+        $data = Models\Product\Product::findOrFail($id);
 
         return response()->json(
-            new ProductResource($data)
+            new Resources\ProductResource($data)
         );
     }
 
@@ -53,11 +54,11 @@ class ProductApiController extends Controller
      */
     public function update(Requests\Product\UpdateProductRequest $request, $id): JsonResponse
     {
-        $data = Product::findOrFail($id);
+        $data = Models\Product\Product::findOrFail($id);
         $data->fill($request->all())->save();
 
         return response()->json(
-            new ProductResource($data)
+            new Resources\ProductResource($data)
         );
     }
 
@@ -66,7 +67,7 @@ class ProductApiController extends Controller
      */
     public function destroy($id): JsonResponse
     {
-        Product::destroy($id);
+        Models\Product\Product::destroy($id);
 
         return response()->json();
     }
@@ -76,7 +77,7 @@ class ProductApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        Product::withTrashed()
+        Models\Product\Product::withTrashed()
             ->findOrFail($id)
             ->restore();
 
@@ -88,7 +89,7 @@ class ProductApiController extends Controller
      */
     public function forceDelete($id): JsonResponse
     {
-        Product::forceDestroy($id);
+        Models\Product\Product::forceDestroy($id);
 
         return response()->json();
     }

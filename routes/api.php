@@ -98,6 +98,24 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::post('{id}/product-images', 'store')->name('store.product-image');
             Route::delete('{id}/product-images/{imageId}', 'destroy')->name('destroy.product-image');
         });
+
+    Route::controller(\Sambu\Ecommerce\Http\Controllers\CartApiController::class)
+        ->prefix('carts')
+        ->name('carts.')
+        ->group(function () {
+            Route::get('{id}', 'show')->name('show');
+            Route::post('', 'store')->name('store');
+            Route::delete('{id}', 'destroy')->name('destroy');
+        });
+
+    Route::controller(\Sambu\Ecommerce\Http\Controllers\CartItemApiController::class)
+        ->prefix('cart-items')
+        ->name('cart-items.')
+        ->group(function () {
+            Route::post('', 'store')->name('store');
+            Route::patch('{id}', 'update')->name('update');
+            Route::delete('{id}', 'destroy')->name('destroy');
+        });
 });
 
 

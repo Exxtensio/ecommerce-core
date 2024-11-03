@@ -66,6 +66,18 @@ trait HasTables
         return config('ecommerce.migration.product_stock_table.name');
     }
 
+    public static function getCartTable($singular = false)
+    {
+        if($singular) return Str::singular(config('ecommerce.migration.cart_table.name'));
+        return config('ecommerce.migration.cart_table.name');
+    }
+
+    public static function getCartItemTable($singular = false)
+    {
+        if($singular) return Str::singular(config('ecommerce.migration.cart_item_table.name'));
+        return config('ecommerce.migration.cart_item_table.name');
+    }
+
     public static function getOrderTable($singular = false)
     {
         if($singular) return Str::singular(config('ecommerce.migration.order_table.name'));

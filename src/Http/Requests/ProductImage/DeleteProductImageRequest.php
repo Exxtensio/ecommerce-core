@@ -26,11 +26,7 @@ class DeleteProductImageRequest extends FormRequest
         $defaultCountry = config('ecommerce.default.country');
 
         return [
-            'country' => [
-                'required',
-                "not_in:$defaultCountry",
-                "exists:$countryTable,code"
-            ],
+            'country' => ['required', "not_in:$defaultCountry", "exists:$countryTable,code"],
         ];
     }
 }

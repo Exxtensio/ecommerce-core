@@ -57,6 +57,12 @@ return [
         'product_image_table' => [
             'name' => 'product_images'
         ],
+        'cart_table' => [
+            'name' => 'carts'
+        ],
+        'cart_item_table' => [
+            'name' => 'cart_items'
+        ],
         'order_table' => [
             'name' => 'orders',
             'amount_decimal_total' => 8,

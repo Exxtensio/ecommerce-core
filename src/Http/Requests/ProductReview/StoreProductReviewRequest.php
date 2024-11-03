@@ -20,10 +20,10 @@ class StoreProductReviewRequest extends FormRequest
         $productTable = app('ecommerce')::getProductTable();
         $productId = app('ecommerce')::getProductId();
         return [
-            'user_id' => ['required',"exists:users,id"],
-            $productId => ['required',"exists:$productTable,id"],
-            'rating' => ['required','in:1,2,3,4,5'],
-            'comment' => ['required','string','max:1000'],
+            'user_id' => ['required', "exists:users,id"],
+            $productId => ['required', "exists:$productTable,id"],
+            'rating' => ['required', 'in:1,2,3,4,5'],
+            'comment' => ['required', 'string', 'max:1000'],
         ];
     }
 }

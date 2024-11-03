@@ -7,7 +7,6 @@ use Laravel\Sanctum;
 
 /**
  * ToDo
- * reviews
  * carts
  * cart_items
  * orders

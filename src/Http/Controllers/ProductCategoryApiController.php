@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models\Product\ProductCategory;
-use Sambu\Ecommerce\Resources\ProductCategoryResource;
+use Sambu\Ecommerce\Models;
+use Sambu\Ecommerce\Resources;
 
 class ProductCategoryApiController extends Controller
 {
@@ -16,10 +16,10 @@ class ProductCategoryApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $data = ProductCategory::all();
+        $data = Models\Product\ProductCategory::all();
 
         return response()->json(
-            ProductCategoryResource::collection($data)
+            Resources\ProductCategoryResource::collection($data)
         );
     }
 
@@ -28,10 +28,11 @@ class ProductCategoryApiController extends Controller
      */
     public function store(Requests\ProductCategory\StoreProductCategoryRequest $request): JsonResponse
     {
-        $data = ProductCategory::create($request->all());
+        $data = Models\Product\ProductCategory::create($request->all());
+        $data = Models\Product\ProductCategory::find($data->id);
 
         return response()->json(
-            new ProductCategoryResource($data),
+            new Resources\ProductCategoryResource($data),
             201
         );
     }
@@ -41,10 +42,10 @@ class ProductCategoryApiController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $data = ProductCategory::findOrFail($id);
+        $data = Models\Product\ProductCategory::findOrFail($id);
 
         return response()->json(
-            new ProductCategoryResource($data)
+            new Resources\ProductCategoryResource($data)
         );
     }
 
@@ -53,11 +54,11 @@ class ProductCategoryApiController extends Controller
      */
     public function update(Requests\ProductCategory\UpdateProductCategoryRequest $request, $id): JsonResponse
     {
-        $data = ProductCategory::findOrFail($id);
+        $data = Models\Product\ProductCategory::findOrFail($id);
         $data->fill($request->all())->save();
 
         return response()->json(
-            new ProductCategoryResource($data)
+            new Resources\ProductCategoryResource($data)
         );
     }
 
@@ -66,7 +67,7 @@ class ProductCategoryApiController extends Controller
      */
     public function destroy($id): JsonResponse
     {
-        ProductCategory::destroy($id);
+        Models\Product\ProductCategory::destroy($id);
 
         return response()->json();
     }
@@ -76,7 +77,7 @@ class ProductCategoryApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductCategory::withTrashed()
+        Models\Product\ProductCategory::withTrashed()
             ->findOrFail($id)
             ->restore();
 
@@ -88,7 +89,7 @@ class ProductCategoryApiController extends Controller
      */
     public function forceDelete($id): JsonResponse
     {
-        ProductCategory::forceDestroy($id);
+        Models\Product\ProductCategory::forceDestroy($id);
 
         return response()->json();
     }

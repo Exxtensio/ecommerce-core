@@ -29,7 +29,7 @@ class StoreProductCategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', "unique:$table,name"],
             'slug' => ['required', 'string', 'max:255', "unique:$table,slug"],
-            'parent_id' => ['nullable',"exists:$table,id"],
+            'parent_id' => ['nullable', "exists:$table,id"],
             'summary' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'src' => ['nullable', 'string', 'max:255'],

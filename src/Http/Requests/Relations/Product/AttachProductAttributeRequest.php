@@ -18,7 +18,7 @@ class AttachProductAttributeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'relations' => ['required','array','min:1']
+            'relations' => ['required', 'array', 'min:1']
         ];
     }
 }

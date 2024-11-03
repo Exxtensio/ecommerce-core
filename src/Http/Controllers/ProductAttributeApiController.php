@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models\Product\ProductAttribute;
-use Sambu\Ecommerce\Resources\ProductAttributeResource;
+use Sambu\Ecommerce\Models;
+use Sambu\Ecommerce\Resources;
 
 class ProductAttributeApiController extends Controller
 {
@@ -16,10 +16,10 @@ class ProductAttributeApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $data = ProductAttribute::all();
+        $data = Models\Product\ProductAttribute::all();
 
         return response()->json(
-            ProductAttributeResource::collection($data)
+            Resources\ProductAttributeResource::collection($data)
         );
     }
 
@@ -28,10 +28,11 @@ class ProductAttributeApiController extends Controller
      */
     public function store(Requests\ProductAttribute\StoreProductAttributeRequest $request): JsonResponse
     {
-        $data = ProductAttribute::create($request->all());
+        $data = Models\Product\ProductAttribute::create($request->all());
+        $data = Models\Product\ProductAttribute::find($data->id);
 
         return response()->json(
-            new ProductAttributeResource($data),
+            new Resources\ProductAttributeResource($data),
             201
         );
     }
@@ -41,10 +42,10 @@ class ProductAttributeApiController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $data = ProductAttribute::findOrFail($id);
+        $data = Models\Product\ProductAttribute::findOrFail($id);
 
         return response()->json(
-            new ProductAttributeResource($data)
+            new Resources\ProductAttributeResource($data)
         );
     }
 
@@ -53,11 +54,11 @@ class ProductAttributeApiController extends Controller
      */
     public function update(Requests\ProductAttribute\UpdateProductAttributeRequest $request, $id): JsonResponse
     {
-        $data = ProductAttribute::findOrFail($id);
+        $data = Models\Product\ProductAttribute::findOrFail($id);
         $data->fill($request->all())->save();
 
         return response()->json(
-            new ProductAttributeResource($data)
+            new Resources\ProductAttributeResource($data)
         );
     }
 
@@ -66,7 +67,7 @@ class ProductAttributeApiController extends Controller
      */
     public function destroy($id): JsonResponse
     {
-        ProductAttribute::destroy($id);
+        Models\Product\ProductAttribute::destroy($id);
 
         return response()->json();
     }
@@ -76,7 +77,7 @@ class ProductAttributeApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductAttribute::withTrashed()
+        Models\Product\ProductAttribute::withTrashed()
             ->findOrFail($id)
             ->restore();
 
@@ -88,7 +89,7 @@ class ProductAttributeApiController extends Controller
      */
     public function forceDelete($id): JsonResponse
     {
-        ProductAttribute::forceDestroy($id);
+        Models\Product\ProductAttribute::forceDestroy($id);
 
         return response()->json();
     }

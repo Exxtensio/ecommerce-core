@@ -47,7 +47,7 @@ class UpdateProductRequest extends FormRequest
             $productBrandId => ['nullable',"exists:$brandTable,id"],
             'type' => ['nullable', 'in:dig,qty,wt,vol,len'],
             'unit' => ['sometimes', 'required_with:type', $this->getUnitInRules()],
-            'step' => ['nullable', 'decimal:1'],
+            'step' => ['nullable', "decimal:$stockPlace"],
             'name' => ['nullable', 'string', 'max:255', "unique:$table,name,$id"],
             'slug' => ['nullable', 'string', 'max:255', "unique:$table,slug,$id"],
             'summary' => ['nullable', 'string', 'max:255'],

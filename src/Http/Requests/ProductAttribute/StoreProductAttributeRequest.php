@@ -20,8 +20,20 @@ class StoreProductAttributeRequest extends FormRequest
     {
         $table = app('ecommerce')::getProductAttributeTable();
         return [
-            'key' => ['required', 'string', 'max:255', Rule::unique($table, 'key')->where('value', $this->input('value'))],
-            'value' => ['required', 'string', 'max:255', Rule::unique($table, 'value')->where('key', $this->input('key'))]
+            'key' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique($table, 'key')
+                    ->where('value', $this->get('value'))
+            ],
+            'value' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique($table, 'value')
+                    ->where('key', $this->get('key'))
+            ]
         ];
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductInventory;
+namespace Sambu\Ecommerce\Http\Requests\Cart;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreProductInventoryRequest extends FormRequest
+class StoreCartRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -25,18 +25,14 @@ class StoreProductInventoryRequest extends FormRequest
     public function rules(): array
     {
         $countryTable = app('ecommerce')::getCountryTable();
-        $pricePlace = config('ecommerce.migration.product_price_table.price_decimal_places');
-        $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
-        $defaultCountry = config('ecommerce.default.country');
 
         return [
-            'country' => ['required', "not_in:$defaultCountry", "exists:$countryTable,code"],
+            'user_id' => ['required', 'exists:users,id'],
+            'country' => ['required', "exists:$countryTable,code"],
             'code' => [
                 Rule::exists($countryTable)
                     ->where(fn(Builder $query) => $query->where('active', 1)),
             ],
-            'price' => ['required', "decimal:$pricePlace"],
-            'stock' => ['required', "decimal:$stockPlace"],
         ];
     }
 

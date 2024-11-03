@@ -36,4 +36,9 @@ trait HasRelationColumns
 
         return "{$productTable}_{$brandTable}_id";
     }
+
+    public static function getCartId(): string
+    {
+        return Str::singular(config('ecommerce.migration.cart_table.name')) . '_id';
+    }
 }

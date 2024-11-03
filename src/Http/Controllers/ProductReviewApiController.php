@@ -5,8 +5,8 @@ namespace Sambu\Ecommerce\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models\Product\ProductReview;
-use Sambu\Ecommerce\Resources\ProductReviewResource;
+use Sambu\Ecommerce\Models;
+use Sambu\Ecommerce\Resources;
 
 class ProductReviewApiController extends Controller
 {
@@ -15,10 +15,11 @@ class ProductReviewApiController extends Controller
      */
     public function store(Requests\ProductReview\StoreProductReviewRequest $request): JsonResponse
     {
-        $data = ProductReview::create($request->all());
+        $data = Models\Product\ProductReview::create($request->all());
+        $data = Models\Product\ProductReview::find($data->id);
 
         return response()->json(
-            new ProductReviewResource($data),
+            new Resources\ProductReviewResource($data),
             201
         );
     }
@@ -28,11 +29,11 @@ class ProductReviewApiController extends Controller
      */
     public function update(Requests\ProductReview\UpdateProductReviewRequest $request, $id): JsonResponse
     {
-        $data = ProductReview::findOrFail($id);
+        $data = Models\Product\ProductReview::findOrFail($id);
         $data->fill($request->all())->save();
 
         return response()->json(
-            new ProductReviewResource($data)
+            new Resources\ProductReviewResource($data)
         );
     }
 
@@ -41,7 +42,7 @@ class ProductReviewApiController extends Controller
      */
     public function destroy($id): JsonResponse
     {
-        ProductReview::destroy($id);
+        Models\Product\ProductReview::destroy($id);
 
         return response()->json();
     }
@@ -51,7 +52,7 @@ class ProductReviewApiController extends Controller
      */
     public function restore($id): JsonResponse
     {
-        ProductReview::withTrashed()
+        Models\Product\ProductReview::withTrashed()
             ->findOrFail($id)
             ->restore();
 
@@ -63,7 +64,7 @@ class ProductReviewApiController extends Controller
      */
     public function forceDelete($id): JsonResponse
     {
-        ProductReview::forceDestroy($id);
+        Models\Product\ProductReview::forceDestroy($id);
 
         return response()->json();
     }

@@ -36,7 +36,7 @@ class StoreProductRequest extends FormRequest
         }
 
         if(!$this->get('stock')) {
-            $this->merge(['stock' => '0.00']);
+            $this->merge(['stock' => number_format(0, config('ecommerce.migration.product_stock_table.stock_decimal_places'), '.', '')]);
         }
     }
 
@@ -54,7 +54,7 @@ class StoreProductRequest extends FormRequest
             $productBrandId => ['nullable',"exists:$brandTable,id"],
             'type' => ['nullable', 'in:dig,qty,wt,vol,len'],
             'unit' => ['nullable', $this->getUnitInRules()],
-            'step' => ['nullable', 'decimal:1'],
+            'step' => ['nullable', "decimal:$stockPlace"],
             'name' => ['required', 'string', 'max:255', "unique:$table,name"],
             'slug' => ['required', 'string', 'max:255', "unique:$table,slug"],
             'summary' => ['nullable', 'string', 'max:255'],

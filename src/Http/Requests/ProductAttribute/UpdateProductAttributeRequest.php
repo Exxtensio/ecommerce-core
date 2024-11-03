@@ -22,8 +22,20 @@ class UpdateProductAttributeRequest extends FormRequest
         $id = $this->route('id');
 
         return [
-            'key' => ['required', 'string', 'max:255', Rule::unique($table, 'key')->where('value', $this->input('value'))->ignore($id)],
-            'value' => ['required', 'string', 'max:255', Rule::unique($table, 'value')->where('key', $this->input('key'))->ignore($id)]
+            'key' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique($table, 'key')
+                    ->where('value', $this->get('value'))->ignore($id)
+            ],
+            'value' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique($table, 'value')
+                    ->where('key', $this->get('key'))->ignore($id)
+            ]
         ];
     }
 }

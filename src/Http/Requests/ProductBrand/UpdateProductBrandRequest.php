@@ -17,7 +17,7 @@ class UpdateProductBrandRequest extends FormRequest
      */
     public function rules(): array
     {
-        $table = app('ecommerce')::getProductCategoryTable();
+        $table = app('ecommerce')::getProductBrandTable();
         $id = $this->route('id');
 
         return [

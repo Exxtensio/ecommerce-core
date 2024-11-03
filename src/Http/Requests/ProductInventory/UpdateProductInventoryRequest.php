@@ -30,19 +30,21 @@ class UpdateProductInventoryRequest extends FormRequest
         $defaultCountry = config('ecommerce.default.country');
 
         return [
-            'country' => [
-                'required',
-                "not_in:$defaultCountry",
-                "exists:$countryTable,code"
-            ],
+            'country' => ['required', "not_in:$defaultCountry", "exists:$countryTable,code"],
             'code' => [
-                Rule::exists($countryTable)->where(function (Builder $query) {
-                    return $query->where('active', 1);
-                }),
+                Rule::exists($countryTable)
+                    ->where(fn(Builder $query) => $query->where('active', 1)),
             ],
             'column' => ['required', 'in:price,stock'],
             'price' => ['required_if:column,price', "decimal:$pricePlace"],
             'stock' => ['required_if:column,stock', "decimal:$stockPlace"],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'code.exists' => 'The selected country is invalid.'
         ];
     }
 }
