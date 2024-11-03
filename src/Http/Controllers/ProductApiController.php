@@ -32,7 +32,7 @@ class ProductApiController extends Controller
         $data = Models\Product\Product::find($data->id);
 
         return response()->json(
-            new Resources\ProductResource($data->load(['prices', 'images', 'stocks'])),
+            new Resources\ProductResource($data),
             201
         );
     }
@@ -40,7 +40,7 @@ class ProductApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResponse
+    public function show(Requests\Product\FindProductRequest $request, $id): JsonResponse
     {
         $data = Models\Product\Product::findOrFail($id);
 
@@ -65,7 +65,7 @@ class ProductApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\Product\FindProductRequest $request, $id): JsonResponse
     {
         Models\Product\Product::destroy($id);
 
@@ -75,7 +75,7 @@ class ProductApiController extends Controller
     /**
      * Restore the specified resource.
      */
-    public function restore($id): JsonResponse
+    public function restore(Requests\Product\FindProductRequest $request, $id): JsonResponse
     {
         Models\Product\Product::withTrashed()
             ->findOrFail($id)
@@ -87,7 +87,7 @@ class ProductApiController extends Controller
     /**
      * Completely remove the specified resource from storage.
      */
-    public function forceDelete($id): JsonResponse
+    public function forceDelete(Requests\Product\FindProductRequest $request, $id): JsonResponse
     {
         Models\Product\Product::forceDestroy($id);
 

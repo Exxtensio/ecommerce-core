@@ -40,7 +40,7 @@ class ProductBrandApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResponse
+    public function show(Requests\ProductBrand\FindProductBrandRequest $request, $id): JsonResponse
     {
         $data = Models\Product\ProductBrand::findOrFail($id);
 
@@ -65,7 +65,7 @@ class ProductBrandApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\ProductBrand\FindProductBrandRequest $request, $id): JsonResponse
     {
         Models\Product\ProductBrand::destroy($id);
 
@@ -75,7 +75,7 @@ class ProductBrandApiController extends Controller
     /**
      * Restore the specified resource.
      */
-    public function restore($id): JsonResponse
+    public function restore(Requests\ProductBrand\FindProductBrandRequest $request, $id): JsonResponse
     {
         Models\Product\ProductBrand::withTrashed()
             ->findOrFail($id)
@@ -87,7 +87,7 @@ class ProductBrandApiController extends Controller
     /**
      * Completely remove the specified resource from storage.
      */
-    public function forceDelete($id): JsonResponse
+    public function forceDelete(Requests\ProductBrand\FindProductBrandRequest $request, $id): JsonResponse
     {
         Models\Product\ProductBrand::forceDestroy($id);
 

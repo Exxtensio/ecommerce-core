@@ -5,7 +5,7 @@ namespace Sambu\Ecommerce\Http\Requests\ProductCategory;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductCategoryRequest extends FormRequest
+class FindProductCategoryRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -23,21 +23,20 @@ class UpdateProductCategoryRequest extends FormRequest
     public function rules(): array
     {
         $table = app('ecommerce')::getProductCategoryTable();
-        $id = $this->route('id');
-
         return [
-            'id' => ['required', "exists:$table,id"],
-            'name' => ['nullable', 'string', 'max:255', "unique:$table,name,$id"],
-            'slug' => ['nullable', 'string', 'max:255', "unique:$table,slug,$id"],
-            'parent_id' => ['nullable', "exists:$table,id"],
-            'summary' => ['nullable', 'string', 'max:255'],
-            'description' => ['nullable', 'string'],
-            'src' => ['nullable', 'string', 'max:255'],
+            'id' => ['required', "exists:$table,id"]
         ];
     }
 
     protected function passedValidation(): void
     {
         $this->query->remove('id');
+    }
+
+    public function messages(): array
+    {
+        return [
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductCategory] {$this->get('id')}"
+        ];
     }
 }

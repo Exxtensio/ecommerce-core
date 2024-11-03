@@ -40,7 +40,7 @@ class ProductAttributeApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResponse
+    public function show(Requests\ProductAttribute\FindProductAttributeRequest $request, $id): JsonResponse
     {
         $data = Models\Product\ProductAttribute::findOrFail($id);
 
@@ -65,7 +65,7 @@ class ProductAttributeApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\ProductAttribute\FindProductAttributeRequest $request, $id): JsonResponse
     {
         Models\Product\ProductAttribute::destroy($id);
 
@@ -75,7 +75,7 @@ class ProductAttributeApiController extends Controller
     /**
      * Restore the specified resource.
      */
-    public function restore($id): JsonResponse
+    public function restore(Requests\ProductAttribute\FindProductAttributeRequest $request, $id): JsonResponse
     {
         Models\Product\ProductAttribute::withTrashed()
             ->findOrFail($id)
@@ -87,7 +87,7 @@ class ProductAttributeApiController extends Controller
     /**
      * Completely remove the specified resource from storage.
      */
-    public function forceDelete($id): JsonResponse
+    public function forceDelete(Requests\ProductAttribute\FindProductAttributeRequest $request, $id): JsonResponse
     {
         Models\Product\ProductAttribute::forceDestroy($id);
 

@@ -40,7 +40,7 @@ class ProductReviewApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\ProductReview\FindProductReviewRequest $request, $id): JsonResponse
     {
         Models\Product\ProductReview::destroy($id);
 
@@ -50,7 +50,7 @@ class ProductReviewApiController extends Controller
     /**
      * Restore the specified resource.
      */
-    public function restore($id): JsonResponse
+    public function restore(Requests\ProductReview\FindProductReviewRequest $request, $id): JsonResponse
     {
         Models\Product\ProductReview::withTrashed()
             ->findOrFail($id)
@@ -62,7 +62,7 @@ class ProductReviewApiController extends Controller
     /**
      * Completely remove the specified resource from storage.
      */
-    public function forceDelete($id): JsonResponse
+    public function forceDelete(Requests\ProductReview\FindProductReviewRequest $request, $id): JsonResponse
     {
         Models\Product\ProductReview::forceDestroy($id);
 

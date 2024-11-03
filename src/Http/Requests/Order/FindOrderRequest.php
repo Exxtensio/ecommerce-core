@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\Relations\Product;
+namespace Sambu\Ecommerce\Http\Requests\Order;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DetachProductAttributeRequest extends FormRequest
+class FindOrderRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -22,10 +22,9 @@ class DetachProductAttributeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $table = app('ecommerce')::getProductTable();
+        $table = app('ecommerce')::getOrderTable();
         return [
-            'id' => ['required', "exists:$table,id"],
-            'relations' => ['required', 'array', 'min:1']
+            'id' => ['required', "exists:$table,id"]
         ];
     }
 
@@ -37,7 +36,7 @@ class DetachProductAttributeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\Product] {$this->get('id')}"
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Order] {$this->get('id')}"
         ];
     }
 }

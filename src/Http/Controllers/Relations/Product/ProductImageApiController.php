@@ -26,9 +26,7 @@ class ProductImageApiController extends Controller
 
                 $data->images()
                     ->where('src', $request->get('src'))
-                    ->update([
-                        'default' => $request->get('default')
-                    ]);
+                    ->update(['default' => $request->get('default')]);
             }
         } else if(!$data->images()->where('src', $request->get('src'))->exists()) {
             if($request->get('default'))
@@ -36,9 +34,10 @@ class ProductImageApiController extends Controller
                     ->where('default', 1)
                     ->update(['default' => 0]);
 
+            $productId = app('ecommerce')::getProductId();
             $data->images()->create([
                 'src' => $request->get('src'),
-                'product_id' => $id,
+                $productId => $id,
                 'default' => $request->get('default') ?? 0,
             ]);
         }
@@ -48,7 +47,7 @@ class ProductImageApiController extends Controller
         );
     }
 
-    public function destroy($id, $imageId): JsonResponse
+    public function destroy(Requests\ProductImage\FindProductImageRequest $request, $id, $imageId): JsonResponse
     {
         $data = Product::findOrFail($id);
         $data->images()

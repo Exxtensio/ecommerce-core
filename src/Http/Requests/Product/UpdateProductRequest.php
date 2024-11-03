@@ -15,6 +15,8 @@ class UpdateProductRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        $this->merge(['id' => $this->route('id')]);
+
         if(!$this->get('type')) {
             $this->merge(['type' => Product::DEFAULT_TYPE]);
         }
@@ -44,6 +46,7 @@ class UpdateProductRequest extends FormRequest
         $id = $this->route('id');
 
         return [
+            'id' => ['required', "exists:$table,id"],
             $productBrandId => ['nullable',"exists:$brandTable,id"],
             'type' => ['nullable', 'in:dig,qty,wt,vol,len'],
             'unit' => ['sometimes', 'required_with:type', $this->getUnitInRules()],
@@ -71,5 +74,17 @@ class UpdateProductRequest extends FormRequest
         };
 
         return "in:$rules";
+    }
+
+    protected function passedValidation(): void
+    {
+        $this->query->remove('id');
+    }
+
+    public function messages(): array
+    {
+        return [
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\Product] {$this->get('id')}"
+        ];
     }
 }

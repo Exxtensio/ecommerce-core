@@ -116,6 +116,14 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::patch('{id}', 'update')->name('update');
             Route::delete('{id}', 'destroy')->name('destroy');
         });
+
+    Route::controller(\Sambu\Ecommerce\Http\Controllers\OrderApiController::class)
+        ->prefix('orders')
+        ->name('orders.')
+        ->group(function () {
+            Route::post('', 'store')->name('store');
+            Route::delete('{id}', 'destroy')->name('destroy');
+        });
 });
 
 

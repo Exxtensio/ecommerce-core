@@ -41,4 +41,9 @@ trait HasRelationColumns
     {
         return Str::singular(config('ecommerce.migration.cart_table.name')) . '_id';
     }
+
+    public static function getOrderId(): string
+    {
+        return Str::singular(config('ecommerce.migration.order_table.name')) . '_id';
+    }
 }

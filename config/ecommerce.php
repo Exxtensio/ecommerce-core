@@ -65,8 +65,6 @@ return [
         ],
         'order_table' => [
             'name' => 'orders',
-            'amount_decimal_total' => 8,
-            'amount_decimal_places' => 2,
             'status_default' => 'new',
             'payment_status_default' => 'processing',
         ],

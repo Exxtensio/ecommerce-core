@@ -26,12 +26,13 @@ class CreateCountryCommand extends Command
     {
         $name = $this->ask('Country name');
         $code = $this->ask('Country code (ISO 3166-1 alpha-2)');
+        $countryTable = app('ecommerce')::getCountryTable();
 
         $validator = Validator::make(
             ['name' => $name, 'code' => $code],
             [
-                'name' => ['required','max:255','min:1','unique:countries'],
-                'code' => ['required','size:2','unique:countries']
+                'name' => ['required', 'max:255', 'min:1', "unique:$countryTable"],
+                'code' => ['required', 'size:2', "unique:$countryTable"]
             ]
         );
 

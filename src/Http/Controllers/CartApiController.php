@@ -15,7 +15,6 @@ class CartApiController extends Controller
      */
     public function store(Requests\Cart\StoreCartRequest $request): JsonResponse
     {
-        $request->request->remove('code');
         $data = Models\Cart::firstOrCreate($request->all());
         $data = Models\Cart::find($data->id);
 
@@ -28,7 +27,7 @@ class CartApiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResponse
+    public function show(Requests\Cart\FindCartRequest $request, $id): JsonResponse
     {
         $data = Models\Cart::findOrFail($id);
 
@@ -40,7 +39,7 @@ class CartApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\Cart\FindCartRequest $request, $id): JsonResponse
     {
         Models\Cart::destroy($id);
 

@@ -19,7 +19,7 @@ class ProductBrandObserver
 
     public function deleted(ObserverModel $model): void
     {
-//        $model->products()->dissociate($model);
+        $model->products()->update([app('ecommerce')::getProductBrandId() => null]);
     }
 
     public function restored(ObserverModel $model): void

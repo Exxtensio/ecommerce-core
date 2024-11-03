@@ -16,7 +16,10 @@ class UpdateProductInventoryRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $this->merge(['code' => $this->get('country')]);
+        $this->merge([
+            'id' => $this->route('id'),
+            'code' => $this->get('country')
+        ]);
     }
 
     /**
@@ -24,12 +27,14 @@ class UpdateProductInventoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        $productTable = app('ecommerce')::getProductTable();
         $countryTable = app('ecommerce')::getCountryTable();
         $pricePlace = config('ecommerce.migration.product_price_table.price_decimal_places');
         $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
         $defaultCountry = config('ecommerce.default.country');
 
         return [
+            'id' => ['required', "exists:$productTable,id"],
             'country' => ['required', "not_in:$defaultCountry", "exists:$countryTable,code"],
             'code' => [
                 Rule::exists($countryTable)
@@ -41,9 +46,16 @@ class UpdateProductInventoryRequest extends FormRequest
         ];
     }
 
+    protected function passedValidation(): void
+    {
+        $this->query->remove('id');
+        $this->query->remove('code');
+    }
+
     public function messages(): array
     {
         return [
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\Product] {$this->get('id')}",
             'code.exists' => 'The selected country is invalid.'
         ];
     }

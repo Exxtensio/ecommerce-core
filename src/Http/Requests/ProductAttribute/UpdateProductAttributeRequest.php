@@ -13,6 +13,11 @@ class UpdateProductAttributeRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $this->merge(['id' => $this->route('id')]);
+    }
+
     /**
      * @return array<string, ValidationRule|array|string>
      */
@@ -22,6 +27,7 @@ class UpdateProductAttributeRequest extends FormRequest
         $id = $this->route('id');
 
         return [
+            'id' => ['required', "exists:$table,id"],
             'key' => [
                 'required',
                 'string',
@@ -36,6 +42,13 @@ class UpdateProductAttributeRequest extends FormRequest
                 Rule::unique($table, 'value')
                     ->where('key', $this->get('key'))->ignore($id)
             ]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductAttribute] {$this->get('id')}"
         ];
     }
 }

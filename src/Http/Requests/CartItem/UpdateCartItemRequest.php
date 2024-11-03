@@ -18,9 +18,10 @@ class UpdateCartItemRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $cartItem = CartItem::find($this->route('id'));
-        $this->merge(['cart_id' => $cartItem->cart->id]);
-        $this->merge(['product_id' => $cartItem->product_id]);
-        $this->merge(['country' => $cartItem->cart->country]);
+        $this->merge(['id' => $this->route('id')]);
+        $this->merge(['cart_id' => $cartItem->cart->id ?? null]);
+        $this->merge(['product_id' => $cartItem->product_id ?? null]);
+        $this->merge(['country' => $cartItem->cart->country ?? null]);
     }
 
     /**
@@ -28,15 +29,20 @@ class UpdateCartItemRequest extends FormRequest
      */
     public function rules(): array
     {
+        $table = app('ecommerce')::getCartItemTable();
         $cartTable = app('ecommerce')::getCartTable();
         $productTable = app('ecommerce')::getProductTable();
         $productStockTable = app('ecommerce')::getProductStockTable();
         $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
 
+        $productId = app('ecommerce')::getProductId();
+        $cartId = app('ecommerce')::getCartId();
+
         return [
-            'cart_id' => ['required', "exists:$cartTable,id"],
+            'id' => ['required', "exists:$table,id"],
+            $cartId => ['required', "exists:$cartTable,id"],
             'quantity' => ['required', "decimal:$stockPlace"],
-            'product_id' => [
+            $productId => [
                 'required',
                 "exists:$productTable,id",
                 Rule::exists($productStockTable)
@@ -49,10 +55,18 @@ class UpdateCartItemRequest extends FormRequest
         ];
     }
 
+    protected function passedValidation(): void
+    {
+        $this->query->remove('id');
+        $this->query->remove('country');
+    }
+
     public function messages(): array
     {
+        $productId = app('ecommerce')::getProductId();
         return [
-            "product_id.exists" => 'The selected product was not found in this quantity.'
+            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\CartItem] {$this->get('id')}",
+            "$productId.exists" => 'The selected product was not found in this quantity.'
         ];
     }
 }

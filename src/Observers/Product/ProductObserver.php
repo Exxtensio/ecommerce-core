@@ -10,13 +10,13 @@ class ProductObserver
     {
         $model->prices()->create([
             'price' => $model->price,
-            'product_id' => $model->id,
+            app('ecommerce')::getProductId() => $model->id,
             'country' => config('ecommerce.default.country')
         ]);
 
         $model->stocks()->create([
             'stock' => $model->stock,
-            'product_id' => $model->id,
+            app('ecommerce')::getProductId() => $model->id,
             'country' => config('ecommerce.default.country')
         ]);
 
@@ -26,7 +26,7 @@ class ProductObserver
 
         $model->images()->create([
             'src' => $model->image,
-            'product_id' => $model->id,
+            app('ecommerce')::getProductId() => $model->id,
             'default' => 1
         ]);
 

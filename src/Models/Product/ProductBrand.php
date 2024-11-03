@@ -16,7 +16,6 @@ class ProductBrand extends AbstractProductModel
 
     public function products(): Relations\HasMany
     {
-        $singular = app('ecommerce')::getProductBrandTable(true);
-        return $this->hasMany(Product::class, "{$singular}_id");
+        return $this->hasMany(Product::class, app('ecommerce')::getProductBrandId());
     }
 }

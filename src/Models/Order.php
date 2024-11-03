@@ -2,19 +2,29 @@
 
 namespace Sambu\Ecommerce\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Sambu\Ecommerce\Models\Geo\AbstractModel;
+use Illuminate\Database\Eloquent\Relations;
 
-class Order extends AbstractModel
+class Order extends AbstractSimpleModel
 {
     protected $fillable = [
+        'user_id',
+        'country',
         'amount',
         'status',
         'payment_status',
     ];
 
-    public function customer(): BelongsTo
+    protected $with = [
+        'items'
+    ];
+
+    public function items(): Relations\HasMany
     {
-        return $this->belongsTo(config('ecommerce.migration.customer_table.model'), "user_id");
+        return $this->hasMany(OrderItem::class, app('ecommerce')::getOrderId());
+    }
+
+    public function customer(): Relations\BelongsTo
+    {
+        return $this->belongsTo(config('ecommerce.migration.customer_table.model'), 'user_id');
     }
 }

@@ -21,8 +21,8 @@ return new class extends Migration
 
         Schema::create(app('ecommerce')->getCartItemTable(), function (Blueprint $table) {
             $table->ecommercePrimary();
-            $table->ecommerceRelation('cart', true, true);
-            $table->ecommerceRelation('product', true, true);
+            $table->ecommerceRelation('cart', false, true);
+            $table->ecommerceRelation('product', false, true);
             $table->decimal('quantity', config('ecommerce.migration.product_stock_table.stock_decimal_total'), config('ecommerce.migration.product_stock_table.stock_decimal_places'))->default(1);
             $table->timestamps();
         });

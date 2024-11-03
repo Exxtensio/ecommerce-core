@@ -25,15 +25,18 @@ class StoreCartItemRequest extends FormRequest
         $productStockTable = app('ecommerce')::getProductStockTable();
         $stockPlace = config('ecommerce.migration.product_stock_table.stock_decimal_places');
 
+        $productId = app('ecommerce')::getProductId();
+        $cartId = app('ecommerce')::getCartId();
+
         return [
-            'cart_id' => ['required', "exists:$cartTable,id"],
+            $cartId => ['required', "exists:$cartTable,id"],
             'quantity' => ['required', "decimal:$stockPlace"],
-            'product_id' => [
+            $productId => [
                 'required',
                 "exists:$productTable,id",
                 Rule::exists($productStockTable)
-                    ->where(function (Builder $query) {
-                        $cart = Cart::find($this->get('cart_id'));
+                    ->where(function (Builder $query) use ($cartId) {
+                        $cart = Cart::find($this->get($cartId));
                         return $query
                             ->where('country', $cart->country)
                             ->where('stock', '>=', $this->get('quantity'));
@@ -44,8 +47,9 @@ class StoreCartItemRequest extends FormRequest
 
     public function messages(): array
     {
+        $productId = app('ecommerce')::getProductId();
         return [
-            "product_id.exists" => 'The selected product was not found in this quantity.'
+            "$productId.exists" => 'The selected product was not found in this quantity.'
         ];
     }
 }

@@ -27,13 +27,14 @@ class CreateCurrencyCommand extends Command
         $name = $this->ask('Currency name');
         $code = $this->ask('Currency code (ISO 4217)');
         $symbol = $this->ask('Currency symbol');
+        $countryTable = app('ecommerce')::getCountryTable();
 
         $validator = Validator::make(
             ['name' => $name, 'code' => $code, 'symbol' => $symbol],
             [
-                'name' => ['required','max:255','min:1','unique:currencies'],
-                'code' => ['required','size:3','unique:currencies'],
-                'symbol' => ['required', 'max:7','min:1'],
+                'name' => ['required', 'max:255', 'min:1', "unique:$countryTable"],
+                'code' => ['required', 'size:3', "unique:$countryTable"],
+                'symbol' => ['required', 'max:7', 'min:1'],
             ]
         );
 

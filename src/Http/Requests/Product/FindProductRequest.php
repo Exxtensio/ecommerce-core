@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\Relations\Product;
+namespace Sambu\Ecommerce\Http\Requests\Product;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DetachProductAttributeRequest extends FormRequest
+class FindProductRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -24,8 +24,7 @@ class DetachProductAttributeRequest extends FormRequest
     {
         $table = app('ecommerce')::getProductTable();
         return [
-            'id' => ['required', "exists:$table,id"],
-            'relations' => ['required', 'array', 'min:1']
+            'id' => ['required', "exists:$table,id"]
         ];
     }
 

@@ -29,9 +29,8 @@ class CartItemApiController extends Controller
      */
     public function update(Requests\CartItem\UpdateCartItemRequest $request, $id): JsonResponse
     {
-        $request->request->remove('country');
         $data = Models\CartItem::findOrFail($id);
-        $data->fill($request->all('quantity'))->save();
+        $data->fill($request->only('quantity'))->save();
 
         return response()->json(
             new Resources\CartItemResource($data)
@@ -41,7 +40,7 @@ class CartItemApiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): JsonResponse
+    public function destroy(Requests\CartItem\FindCartItemRequest $request, $id): JsonResponse
     {
         Models\CartItem::destroy($id);
 

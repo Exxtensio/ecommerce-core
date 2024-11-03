@@ -18,14 +18,6 @@ class Test extends Command
 
     public function handle(): void
     {
-//        $s = ProductCategory::create([
-//            'name' => 'category 2',
-//        ]);
-//
-//        $s->parent()
-//            ->associate(ProductCategory::find('01jb1238egwwz3wm31r42709wp'))
-//            ->save();
-
-
+        //
     }
 }
