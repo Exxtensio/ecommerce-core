@@ -1,6 +1,6 @@
 {
     "name": "sambu/ecommerce",
-    "version": "1.0.2",
+    "version": "v1.0.0",
     "license": "MIT",
     "description": "Sambu eCommerce is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
     "type": "library",
