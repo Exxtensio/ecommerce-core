@@ -5,7 +5,9 @@
 ![GitHub followers](https://img.shields.io/github/followers/Sambu-App)
 ![Packagist Version](https://img.shields.io/packagist/v/sambu/ecommerce)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/sambu/ecommerce)
-![GitHub License](https://img.shields.io/github/license/Sambu-App/ecommerce)
+
+[//]: # ([![Support on Patreon]&#40;https://img.shields.io/badge/Support-Patreon-red?logo=patreon&#41;]&#40;https://www.patreon.com/SambuApp&#41;)
+
 
 ## Installation
 
