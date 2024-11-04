@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Sambu\Ecommerce\Http\Requests;
 use Sambu\Ecommerce\Models;
+use Sambu\Ecommerce\Resources\OrderResource;
 
 class OrderApiController extends Controller
 {
@@ -33,6 +34,9 @@ class OrderApiController extends Controller
                     'quantity' => $item->quantity,
                     'price' => $item->product->prices->firstWhere('country', $cart->country)->price,
                 ]);
+
+                $item->product->stocks->firstWhere('country', $cart->country)
+                    ->decrement('stock', $item->quantity);
             });
 
             $cart->delete();
@@ -42,7 +46,7 @@ class OrderApiController extends Controller
         $data = Models\Order::findOrFail($orderId);
 
         return response()->json(
-            $data,
+            new OrderResource($data),
             201
         );
     }

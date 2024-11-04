@@ -38,7 +38,7 @@ class StoreCartRequest extends FormRequest
 
     protected function passedValidation(): void
     {
-        $this->query->remove('code');
+        $this->request->remove('code');
     }
 
     public function messages(): array

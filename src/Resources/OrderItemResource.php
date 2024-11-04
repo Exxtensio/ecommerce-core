@@ -5,7 +5,7 @@ namespace Sambu\Ecommerce\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CartItemResource extends JsonResource
+class OrderItemResource extends JsonResource
 {
     public $with = [
         'product'
@@ -18,8 +18,9 @@ class CartItemResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'product' => new ProductResource($this->whenLoaded('product')),
             'quantity' => $this->quantity,
+            'price' => $this->price,
+            'product' => new ProductResource($this->whenLoaded('product')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
