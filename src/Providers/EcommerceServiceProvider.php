@@ -3,15 +3,9 @@
 namespace Sambu\Ecommerce\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Filesystem\Filesystem;
 use Laravel\Sanctum;
 
-/**
- * ToDo
- * carts
- * cart_items
- * orders
- * order_items
- */
 class EcommerceServiceProvider extends ServiceProvider
 {
     public function register(): void
@@ -26,10 +20,10 @@ class EcommerceServiceProvider extends ServiceProvider
         Sanctum\Sanctum::usePersonalAccessTokenModel(Sanctum\PersonalAccessToken::class);
     }
 
-    public function boot(): void
+    public function boot(Filesystem $filesystem): void
     {
-        $this->publishes([
-            __DIR__.'/../../config/ecommerce.php' => config_path('ecommerce.php'),
-        ]);
+        if (!$filesystem->exists(config_path('ecommerce.php'))) {
+            $filesystem->copy(__DIR__.'/../../config/ecommerce.php', config_path('ecommerce.php'));
+        }
     }
 }

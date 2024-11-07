@@ -1,13 +1,38 @@
 {
     "name": "sambu/ecommerce",
-    "version": "v1.0.0",
+    "version": "v1.0.1",
     "license": "MIT",
     "description": "Sambu eCommerce is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
     "type": "library",
+    "keywords": [
+        "sambu",
+        "sambu ecommerce",
+        "ecommerce",
+        "online store",
+        "shopping cart",
+        "checkout",
+        "laravel ecommerce",
+        "product catalog",
+        "orders",
+        "multi-currency",
+        "product attributes",
+        "digital products",
+        "physical products",
+        "laravel shopping cart",
+        "laravel store",
+        "laravel orders",
+        "laravel"
+    ],
+    "homepage": "https://github.com/Sambu-App/ecommerce",
+    "support": {
+        "issues": "https://github.com/Sambu-App/ecommerce/issues",
+        "source": "https://github.com/Sambu-App/ecommerce"
+    },
     "authors": [
         {
             "name": "Vladlen Beilik",
-            "email": "vladlen.beilik@gmail.com"
+            "email": "vladlen.beilik@gmail.com",
+            "role": "Developer"
         }
     ],
     "autoload": {

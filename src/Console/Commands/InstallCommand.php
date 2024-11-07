@@ -42,7 +42,7 @@ class InstallCommand extends Command
 
         $this->newLine();
         $this->warn("\nCongratulations!");
-        $this->info("Laravel eCommerce add-on installation is complete");
+        $this->info("Sambu eCommerce installation completed");
 
         $table = new Table($this->output);
         $table->setHeaders(['Key', 'Value']);
