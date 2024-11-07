@@ -8,7 +8,6 @@
 
 [//]: # ([![Support on Patreon]&#40;https://img.shields.io/badge/Support-Patreon-red?logo=patreon&#41;]&#40;https://www.patreon.com/SambuApp&#41;)
 
-
 ## Installation
 
 You can install the package via composer:
