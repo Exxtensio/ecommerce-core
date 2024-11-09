@@ -10,4 +10,11 @@ class Artisan extends \App\Models\User
 
     protected $table = 'users';
     protected string $role = 'artisan';
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'email_verified_at'
+    ];
 }
