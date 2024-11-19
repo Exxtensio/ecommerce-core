@@ -10,13 +10,15 @@ class ConsoleServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $this->commands([
+            Console\Commands\UpdateCurrencyRateCommand::class
+        ]);
         if($this->app->runningInConsole()) {
             $this->commands([
                 Console\Commands\Test::class,
                 Console\Commands\InstallCommand::class,
 
                 Console\Commands\CreateCurrencyCommand::class,
-                Console\Commands\UpdateCurrencyRateCommand::class,
                 Console\Commands\UpdateCurrencyFixedRateCommand::class,
 
                 Console\Commands\CreateCountryCommand::class,
