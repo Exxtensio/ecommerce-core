@@ -17,9 +17,9 @@ class DefaultSeeder extends Seeder
         $this->initArtisan();
     }
 
-     protected function initCountries(): void
+    protected function initCountries(): void
     {
-        $countries = File::get(__DIR__.'/../../countries.json');
+        $countries = File::get(__DIR__ . '/../../countries.json');
 
         collect(json_decode($countries, true))
             ->each(function ($country) {
@@ -41,7 +41,7 @@ class DefaultSeeder extends Seeder
 
     protected function initCurrencies(): void
     {
-        $currencies = File::get(__DIR__.'/../../currencies.json');
+        $currencies = File::get(__DIR__ . '/../../currencies.json');
 
         collect(json_decode($currencies, true))
             ->each(function ($currency) {

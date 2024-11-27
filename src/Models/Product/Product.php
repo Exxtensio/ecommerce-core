@@ -104,6 +104,17 @@ class Product extends AbstractProductModel
         'pt' => 'pint',
         'imp-fl-oz' => 'imperial fluid ounce',
         'fl-oz' => 'fluid ounce',
+        'km' => 'kilometer',
+        'm' => 'meter',
+        'cm' => 'centimeter',
+        'mm' => 'millimeter',
+        'mcm' => 'micrometer',
+        'nm' => 'nanometer',
+        'mi' => 'mile',
+        'yd' => 'yard',
+        'ft' => 'foot',
+        'in' => 'inch',
+        'nmi' => 'nautical mile'
     ];
 
     public function __construct(array $attributes = [])
