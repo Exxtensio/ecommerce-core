@@ -19,7 +19,6 @@ class ProductInventoryApiController extends Controller
         } else if(!$data->prices()->where('country', $request->get('country'))->exists()) {
             $data->prices()->create([
                 'price' => $request->get('price'),
-                'product_id' => $id,
                 'country' => $request->get('country')
             ]);
         }
@@ -27,10 +26,8 @@ class ProductInventoryApiController extends Controller
         if($data->stocks()->withTrashed()->where('country', $request->get('country'))->exists()) {
             $data->stocks()->withTrashed()->where('country', $request->get('country'))->restore();
         } else if(!$data->stocks()->where('country', $request->get('country'))->exists()) {
-            $productId = app('ecommerce')::getProductId();
             $data->stocks()->create([
                 'stock' => $request->get('stock'),
-                $productId => $id,
                 'country' => $request->get('country')
             ]);
         }
