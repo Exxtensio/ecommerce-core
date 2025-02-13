@@ -1,8 +1,8 @@
 # Backend for Building an eCommerce Store
 
-![GitHub followers](https://img.shields.io/github/followers/exxtensio)
-![Packagist Version](https://img.shields.io/packagist/v/exxtensio/ecommerce-core)
-![Packagist Downloads](https://img.shields.io/packagist/dt/exxtensio/ecommerce-core)
+![GitHub followers](https://img.shields.io/github/followers/Exxtensio)
+![Packagist Version](https://img.shields.io/packagist/v/Exxtensio/ecommerce-core)
+![Packagist Downloads](https://img.shields.io/packagist/dt/Exxtensio/ecommerce-core)
 
 ## Installation
 
@@ -16,7 +16,7 @@ The package will automatically register itself. Follow the documentation below.
 
 ## Documentation, Installation, and Usage Instructions
 
-See the [documentation](https://github.com/exxtensio/ecommerce/wiki) for detailed installation and usage instructions.
+See the [documentation](https://github.com/exxtensio/ecommerce-core/wiki) for detailed installation and usage instructions.
 
 ## License
 
