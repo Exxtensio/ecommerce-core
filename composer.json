@@ -1,12 +1,12 @@
 {
-    "name": "sambu/ecommerce",
+    "name": "exxtensio/ecommerce-core",
     "version": "1.0.5",
     "license": "MIT",
-    "description": "Sambu eCommerce is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
+    "description": "Exxtensio eCommerce Core is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
     "type": "library",
     "keywords": [
-        "sambu",
-        "sambu ecommerce",
+        "exxtensio",
+        "exxtensio ecommerce",
         "ecommerce",
         "online store",
         "shopping cart",
@@ -23,10 +23,10 @@
         "laravel orders",
         "laravel"
     ],
-    "homepage": "https://github.com/Sambu-App/ecommerce",
+    "homepage": "https://github.com/exxtensio/ecommerce-core",
     "support": {
-        "issues": "https://github.com/Sambu-App/ecommerce/issues",
-        "source": "https://github.com/Sambu-App/ecommerce"
+        "issues": "https://github.com/exxtensio/ecommerce-core/issues",
+        "source": "https://github.com/exxtensio/ecommerce-core"
     },
     "authors": [
         {
@@ -37,8 +37,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Sambu\\Ecommerce\\": "src/",
-            "Sambu\\Ecommerce\\Database\\Seeders\\": "database/seeders/"
+            "Exxtensio\\EcommerceCore\\": "src/",
+            "Exxtensio\\EcommerceCore\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "extra": {
@@ -47,10 +47,10 @@
         },
         "laravel": {
             "providers": [
-                "Sambu\\Ecommerce\\Providers\\EcommerceServiceProvider"
+                "Exxtensio\\EcommerceCore\\Providers\\EcommerceServiceProvider"
             ],
             "aliases": {
-                "Ecommerce": "Sambu\\Ecommerce"
+                "Ecommerce": "Exxtensio\\EcommerceCore"
             }
         }
     },

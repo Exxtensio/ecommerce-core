@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce;
+namespace Exxtensio\EcommerceCore;
 
 use Illuminate\Support\Facades\Facade;
-use Sambu\Ecommerce\Services\ExchangeRateService;
+use Exxtensio\EcommerceCore\Services\ExchangeRateService;
 use Exception;
 
 class Ecommerce extends Facade

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductCategory;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductCategory;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,7 +36,7 @@ class FindProductCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductCategory] {$this->get('id')}"
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Product\\ProductCategory] {$this->get('id')}"
         ];
     }
 }

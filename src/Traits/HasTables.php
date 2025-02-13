@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Traits;
+namespace Exxtensio\EcommerceCore\Traits;
 
 use Illuminate\Support\Str;
 

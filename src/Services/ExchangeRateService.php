@@ -1,10 +1,10 @@
 <?php
 
-namespace Sambu\Ecommerce\Services;
+namespace Exxtensio\EcommerceCore\Services;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
-use Sambu\Ecommerce\Models\Geo\Currency;
+use Exxtensio\EcommerceCore\Models\Geo\Currency;
 
 class ExchangeRateService
 {
@@ -14,7 +14,7 @@ class ExchangeRateService
 
     public function __construct()
     {
-        $this->apiKey = config('ecommerce.exchangerateApiKey') ?? null;
+        $this->apiKey = config('ecommerce.exchangerateApiKey');
         $this->endpoint = "//v6.exchangerate-api.com/v6/$this->apiKey/latest/USD";
     }
 

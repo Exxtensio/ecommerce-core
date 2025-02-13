@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductCategory;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductCategory;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;

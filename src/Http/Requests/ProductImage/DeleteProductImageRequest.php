@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductImage;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductImage;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;

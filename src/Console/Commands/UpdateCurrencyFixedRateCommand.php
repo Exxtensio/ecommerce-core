@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Console\Commands;
+namespace Exxtensio\EcommerceCore\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
-use Sambu\Ecommerce\Models\Geo\Currency;
+use Exxtensio\EcommerceCore\Models\Geo\Currency;
 
 class UpdateCurrencyFixedRateCommand extends Command
 {

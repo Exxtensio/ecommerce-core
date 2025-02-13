@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductReview;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductReview;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -39,7 +39,7 @@ class UpdateProductReviewRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductReview] {$this->get('id')}"
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Product\\ProductReview] {$this->get('id')}"
         ];
     }
 }

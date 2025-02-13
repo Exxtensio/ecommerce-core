@@ -1,12 +1,12 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\CartItem;
+namespace Exxtensio\EcommerceCore\Http\Requests\CartItem;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Sambu\Ecommerce\Models\Cart;
+use Exxtensio\EcommerceCore\Models\Cart;
 
 class StoreCartItemRequest extends FormRequest
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\Product;
+namespace Exxtensio\EcommerceCore\Http\Requests\Product;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
-use Sambu\Ecommerce\Models\Product\Product;
+use Exxtensio\EcommerceCore\Models\Product\Product;
 
 class StoreProductRequest extends FormRequest
 {

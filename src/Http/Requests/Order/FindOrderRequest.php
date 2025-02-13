@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\Order;
+namespace Exxtensio\EcommerceCore\Http\Requests\Order;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,7 +36,7 @@ class FindOrderRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Order] {$this->get('id')}"
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Order] {$this->get('id')}"
         ];
     }
 }

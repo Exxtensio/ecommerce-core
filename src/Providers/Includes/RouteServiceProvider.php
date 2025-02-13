@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers\Includes;
+namespace Exxtensio\EcommerceCore\Providers\Includes;
 
 use Illuminate\Support\ServiceProvider;
-use Sambu\Ecommerce\RouteRegistration;
+use Exxtensio\EcommerceCore\RouteRegistration;
 
 class RouteServiceProvider extends ServiceProvider
 {

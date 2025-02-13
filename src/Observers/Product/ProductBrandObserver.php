@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce\Observers\Product;
+namespace Exxtensio\EcommerceCore\Observers\Product;
 
 use Illuminate\Support\Facades\Storage;
-use Sambu\Ecommerce\Models\Product\ProductBrand as ObserverModel;
+use Exxtensio\EcommerceCore\Models\Product\ProductBrand as ObserverModel;
 
 class ProductBrandObserver
 {

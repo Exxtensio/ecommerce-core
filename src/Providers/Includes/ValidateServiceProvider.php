@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers\Includes;
+namespace Exxtensio\EcommerceCore\Providers\Includes;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;

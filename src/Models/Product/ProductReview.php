@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Models\Product;
+namespace Exxtensio\EcommerceCore\Models\Product;
 
 class ProductReview extends AbstractProductModel
 {

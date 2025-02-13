@@ -1,13 +1,13 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Controllers;
+namespace Exxtensio\EcommerceCore\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models;
-use Sambu\Ecommerce\Resources\OrderResource;
+use Exxtensio\EcommerceCore\Http\Requests;
+use Exxtensio\EcommerceCore\Models;
+use Exxtensio\EcommerceCore\Resources\OrderResource;
 
 class OrderApiController extends Controller
 {

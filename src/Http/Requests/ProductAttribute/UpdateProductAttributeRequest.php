@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductAttribute;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductAttribute;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -48,7 +48,7 @@ class UpdateProductAttributeRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductAttribute] {$this->get('id')}"
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Product\\ProductAttribute] {$this->get('id')}"
         ];
     }
 }

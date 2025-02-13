@@ -1,8 +1,8 @@
 <?php
 
-namespace Sambu\Ecommerce\Observers\Product;
+namespace Exxtensio\EcommerceCore\Observers\Product;
 
-use Sambu\Ecommerce\Models\Product\Product as ObserverModel;
+use Exxtensio\EcommerceCore\Models\Product\Product as ObserverModel;
 
 class ProductObserver
 {

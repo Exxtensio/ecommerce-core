@@ -1,12 +1,12 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Controllers\Relations\Product;
+namespace Exxtensio\EcommerceCore\Http\Controllers\Relations\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Sambu\Ecommerce\Http\Requests;
-use Sambu\Ecommerce\Models\Product\Product;
-use Sambu\Ecommerce\Resources\ProductResource;
+use Exxtensio\EcommerceCore\Http\Requests;
+use Exxtensio\EcommerceCore\Models\Product\Product;
+use Exxtensio\EcommerceCore\Resources\ProductResource;
 
 class ProductCategoryApiController extends Controller
 {

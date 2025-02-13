@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Models;
+namespace Exxtensio\EcommerceCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use Sambu\Ecommerce\Traits\HasAnotherPrimaryKey;
+use Exxtensio\EcommerceCore\Traits\HasAnotherPrimaryKey;
 
 /**
  * @method static where(string $string, $value)

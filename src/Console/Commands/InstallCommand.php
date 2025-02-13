@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Console\Commands;
+namespace Exxtensio\EcommerceCore\Console\Commands;
 
 use Illuminate\Console\Command;
 use Laravel\Sanctum\PersonalAccessToken;
@@ -27,10 +27,10 @@ class InstallCommand extends Command
         $this->callSilently('migrate');
         $bar->advance();
 
-        $this->callSilently('db:seed', ['--class' => \Sambu\Ecommerce\Database\Seeders\DefaultSeeder::class]);
+        $this->callSilently('db:seed', ['--class' => \Exxtensio\EcommerceCore\Database\Seeders\DefaultSeeder::class]);
         $bar->advance();
 
-        $artisan = \Sambu\Ecommerce\Models\Artisan::where('name', config('ecommerce.artisan.name'))
+        $artisan = \Exxtensio\EcommerceCore\Models\Artisan::where('name', config('ecommerce.artisan.name'))
             ->where('email', config('ecommerce.artisan.email'))
             ->first();
 
@@ -42,7 +42,7 @@ class InstallCommand extends Command
 
         $this->newLine();
         $this->warn("\nCongratulations!");
-        $this->info("Sambu eCommerce installation completed");
+        $this->info("Exxtensio eCommerce Core installation completed");
 
         $table = new Table($this->output);
         $table->setHeaders(['Key', 'Value']);

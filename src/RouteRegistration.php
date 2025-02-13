@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce;
+namespace Exxtensio\EcommerceCore;
 
 use Illuminate\Support\Facades\Route;
 

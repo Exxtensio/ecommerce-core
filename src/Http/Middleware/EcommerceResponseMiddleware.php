@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Middleware;
+namespace Exxtensio\EcommerceCore\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\JsonResponse;

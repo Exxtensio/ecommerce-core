@@ -1,10 +1,10 @@
 <?php
 
-namespace Sambu\Ecommerce\Console\Commands;
+namespace Exxtensio\EcommerceCore\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
-use Sambu\Ecommerce\Models\Geo\Country;
+use Exxtensio\EcommerceCore\Models\Geo\Country;
 
 class MakeInactiveCountryCommand extends Command
 {

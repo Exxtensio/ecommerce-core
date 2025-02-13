@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce\Models;
+namespace Exxtensio\EcommerceCore\Models;
 
 use Illuminate\Database\Eloquent\Relations;
-use Sambu\Ecommerce\Models\Product\Product;
+use Exxtensio\EcommerceCore\Models\Product\Product;
 
 class CartItem extends AbstractSimpleModel
 {

@@ -26,7 +26,7 @@ return [
         */
         'primary' => 'ulid',
         'customer_table' => [
-            'model' => \Sambu\Ecommerce\Models\Customer::class,
+            'model' => \Exxtensio\EcommerceCore\Models\Customer::class,
         ],
         'product_brand_table' => [
             'name' => 'product_brands'

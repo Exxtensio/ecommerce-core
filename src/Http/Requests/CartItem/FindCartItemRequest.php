@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\CartItem;
+namespace Exxtensio\EcommerceCore\Http\Requests\CartItem;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,7 +36,7 @@ class FindCartItemRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\CartItem] {$this->get('id')}"
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\CartItem] {$this->get('id')}"
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Models;
+namespace Exxtensio\EcommerceCore\Models;
 
 use Laravel\Sanctum\HasApiTokens;
 

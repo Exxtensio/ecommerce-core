@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Models\Geo;
+namespace Exxtensio\EcommerceCore\Models\Geo;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

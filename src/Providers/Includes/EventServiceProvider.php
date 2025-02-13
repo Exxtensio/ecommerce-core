@@ -1,10 +1,10 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers\Includes;
+namespace Exxtensio\EcommerceCore\Providers\Includes;
 
 use Illuminate\Support\ServiceProvider;
-use Sambu\Ecommerce\Models;
-use Sambu\Ecommerce\Observers;
+use Exxtensio\EcommerceCore\Models;
+use Exxtensio\EcommerceCore\Observers;
 
 class EventServiceProvider extends ServiceProvider
 {

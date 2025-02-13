@@ -1,12 +1,12 @@
 <?php
 
-namespace Sambu\Ecommerce\Database\Seeders;
+namespace Exxtensio\EcommerceCore\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Sambu\Ecommerce\Models;
+use Exxtensio\EcommerceCore\Models;
 
 class DefaultSeeder extends Seeder
 {
@@ -55,7 +55,9 @@ class DefaultSeeder extends Seeder
                 );
             });
 
-        Artisan::call('ecommerce:update-currency-rate');
+        if(!empty(config('ecommerce.exchangerateApiKey'))) {
+            Artisan::call('ecommerce:update-currency-rate');
+        }
     }
 
     protected function initArtisan(): void

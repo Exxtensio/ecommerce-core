@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Console\Commands;
+namespace Exxtensio\EcommerceCore\Console\Commands;
 
 use Illuminate\Console\Command;
 

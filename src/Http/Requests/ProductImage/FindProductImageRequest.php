@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\ProductImage;
+namespace Exxtensio\EcommerceCore\Http\Requests\ProductImage;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -42,8 +42,8 @@ class FindProductImageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'id.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\Product] {$this->get('id')}",
-            'imageId.exists' => "No query results for model [Sambu\\Ecommerce\\Models\\Product\\ProductImage] {$this->get('imageId')}",
+            'id.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Product\\Product] {$this->get('id')}",
+            'imageId.exists' => "No query results for model [Exxtensio\\EcommerceCore\\Models\\Product\\ProductImage] {$this->get('imageId')}",
         ];
     }
 }

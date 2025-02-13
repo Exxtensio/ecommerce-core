@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Http\Requests\Order;
+namespace Exxtensio\EcommerceCore\Http\Requests\Order;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Sambu\Ecommerce\Models\Cart;
-use Sambu\Ecommerce\Models\CartItem;
+use Exxtensio\EcommerceCore\Models\Cart;
+use Exxtensio\EcommerceCore\Models\CartItem;
 
 class CheckCartItemQuantity implements ValidationRule
 {
@@ -17,7 +17,7 @@ class CheckCartItemQuantity implements ValidationRule
         $cart->items->each(function (CartItem $item) use ($productId, $cart, $fail) {
             $currentStock = $item->product->stocks->where('country', $cart->country)->first()->stock ?? 0;
             if($currentStock < $item->quantity) {
-                $fail("The model [Sambu\\Ecommerce\\Models\\Product\\Product] $item[$productId] was not found in this quantity.");
+                $fail("The model [Exxtensio\\EcommerceCore\\Models\\Product\\Product] $item[$productId] was not found in this quantity.");
             }
         });
     }

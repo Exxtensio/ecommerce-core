@@ -1,11 +1,11 @@
 <?php
 
-namespace Sambu\Ecommerce\Console\Commands;
+namespace Exxtensio\EcommerceCore\Console\Commands;
 
 use Exception;
 use Illuminate\Console\Command;
-use Sambu\Ecommerce\Models\Geo\Country;
-use Sambu\Ecommerce\Models\Geo\Currency;
+use Exxtensio\EcommerceCore\Models\Geo\Country;
+use Exxtensio\EcommerceCore\Models\Geo\Currency;
 
 class MakeActiveCountryCommand extends Command
 {

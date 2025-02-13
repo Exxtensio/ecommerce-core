@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->name('v1.')->group(function () {
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductCategoryApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\ProductCategoryApiController::class)
         ->prefix('product-categories')
         ->name('product-categories.')
         ->group(function () {
@@ -16,7 +16,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductAttributeApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\ProductAttributeApiController::class)
         ->prefix('product-attributes')
         ->name('product-attributes.')
         ->group(function () {
@@ -29,7 +29,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductBrandApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\ProductBrandApiController::class)
         ->prefix('product-brands')
         ->name('product-brands.')
         ->group(function () {
@@ -42,7 +42,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\ProductApiController::class)
         ->prefix('products')
         ->name('products.')
         ->group(function () {
@@ -55,7 +55,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\ProductReviewApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\ProductReviewApiController::class)
         ->prefix('product-reviews')
         ->name('product-reviews.')
         ->group(function () {
@@ -66,7 +66,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/force-delete', 'forceDelete')->name('force-delete');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductCategoryApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\Relations\Product\ProductCategoryApiController::class)
         ->prefix('products')
         ->name('products.')
         ->group(function () {
@@ -74,7 +74,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/product-categories', 'detach')->name('detach.product-category');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductAttributeApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\Relations\Product\ProductAttributeApiController::class)
         ->prefix('products')
         ->name('products.')
         ->group(function () {
@@ -82,7 +82,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/product-attributes', 'detach')->name('detach.product-attribute');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductInventoryApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\Relations\Product\ProductInventoryApiController::class)
         ->prefix('products')
         ->name('products.')
         ->group(function () {
@@ -91,7 +91,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/product-inventory', 'destroy')->name('destroy.product-inventory');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\Relations\Product\ProductImageApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\Relations\Product\ProductImageApiController::class)
         ->prefix('products')
         ->name('products.')
         ->group(function () {
@@ -99,7 +99,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}/product-images/{imageId}', 'destroy')->name('destroy.product-image');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\CartApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\CartApiController::class)
         ->prefix('carts')
         ->name('carts.')
         ->group(function () {
@@ -108,7 +108,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}', 'destroy')->name('destroy');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\CartItemApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\CartItemApiController::class)
         ->prefix('cart-items')
         ->name('cart-items.')
         ->group(function () {
@@ -117,7 +117,7 @@ Route::prefix('v1')->name('v1.')->group(function () {
             Route::delete('{id}', 'destroy')->name('destroy');
         });
 
-    Route::controller(\Sambu\Ecommerce\Http\Controllers\OrderApiController::class)
+    Route::controller(\Exxtensio\EcommerceCore\Http\Controllers\OrderApiController::class)
         ->prefix('orders')
         ->name('orders.')
         ->group(function () {

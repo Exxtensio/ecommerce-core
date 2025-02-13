@@ -1,10 +1,10 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers\Includes;
+namespace Exxtensio\EcommerceCore\Providers\Includes;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
-use Sambu\Ecommerce\Console;
+use Exxtensio\EcommerceCore\Console;
 
 class ConsoleServiceProvider extends ServiceProvider
 {

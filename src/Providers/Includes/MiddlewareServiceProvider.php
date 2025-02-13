@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers\Includes;
+namespace Exxtensio\EcommerceCore\Providers\Includes;
 
 use Illuminate\Support\ServiceProvider;
-use Sambu\Ecommerce\Http\Middleware;
+use Exxtensio\EcommerceCore\Http\Middleware;
 
 class MiddlewareServiceProvider extends ServiceProvider
 {

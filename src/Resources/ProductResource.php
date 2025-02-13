@@ -1,10 +1,10 @@
 <?php
 
-namespace Sambu\Ecommerce\Resources;
+namespace Exxtensio\EcommerceCore\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Sambu\Ecommerce\Models\Product\Product;
+use Exxtensio\EcommerceCore\Models\Product\Product;
 
 class ProductResource extends JsonResource
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Sambu\Ecommerce\Observers\Product;
+namespace Exxtensio\EcommerceCore\Observers\Product;
 
 use Illuminate\Support\Facades\Storage;
-use Sambu\Ecommerce\Models\Product\ProductCategory as ObserverModel;
+use Exxtensio\EcommerceCore\Models\Product\ProductCategory as ObserverModel;
 
 class ProductCategoryObserver
 {

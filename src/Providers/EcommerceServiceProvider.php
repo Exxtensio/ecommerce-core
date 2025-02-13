@@ -1,6 +1,6 @@
 <?php
 
-namespace Sambu\Ecommerce\Providers;
+namespace Exxtensio\EcommerceCore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
