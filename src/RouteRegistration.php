@@ -17,10 +17,11 @@ class RouteRegistration
 
     public function withApiRoutes(): RouteRegistration
     {
-        Route::middleware(config('ecommerce.routes.api.middlewares'))
-            ->name('ecommerce.api.')
-            ->prefix(config('ecommerce.routes.api.prefix'))
-            ->group(__DIR__.'/../routes/api.php');
+        if(!class_exists('Exxtensio\EcommerceDashboard\Frontend'))
+            Route::middleware(config('ecommerce.routes.api.middlewares'))
+                ->name('ecommerce.api.')
+                ->prefix(config('ecommerce.routes.api.prefix'))
+                ->group(__DIR__.'/../routes/api.php');
 
         return $this;
     }
