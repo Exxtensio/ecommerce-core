@@ -12,7 +12,8 @@ class CartItem extends AbstractSimpleModel
         $this->fillable = [
             app('ecommerce')::getCartId(),
             app('ecommerce')::getProductId(),
-            'quantity'
+            'quantity',
+            'price',
         ];
         parent::__construct($attributes);
     }

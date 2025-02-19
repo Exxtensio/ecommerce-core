@@ -15,7 +15,7 @@ return new class extends Migration
             $table->ecommercePrimary();
             $table->unsignedBigInteger('user_id')->index();
             $table->ecommerceRelation('product');
-            $table->enum('rating', ['1', '2', '3', '4', '5'])->default('5');
+            $table->enum('rating', ['1','2','3','4','5'])->default('5');
             $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();

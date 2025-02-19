@@ -23,7 +23,16 @@ return new class extends Migration
             $table->ecommercePrimary();
             $table->ecommerceRelation('cart', false, true);
             $table->ecommerceRelation('product', false, true);
-            $table->decimal('quantity', config('ecommerce.migration.product_stock_table.stock_decimal_total'), config('ecommerce.migration.product_stock_table.stock_decimal_places'))->default(1);
+            $table->decimal(
+                'quantity',
+                config('ecommerce.migration.product_stock_table.stock_decimal_total'),
+                config('ecommerce.migration.product_stock_table.stock_decimal_places')
+            )->default(1);
+            $table->decimal(
+                'price',
+                config('ecommerce.migration.product_price_table.price_decimal_total'),
+                config('ecommerce.migration.product_price_table.price_decimal_places')
+            );
             $table->timestamps();
         });
     }

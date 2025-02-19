@@ -16,7 +16,11 @@ return new class extends Migration
             $table->ecommerceRelation('product_brand', true, true);
             $table->char('type', 3);
             $table->char('unit', 9);
-            $table->decimal('step', config('ecommerce.migration.product_stock_table.stock_decimal_total'), config('ecommerce.migration.product_stock_table.stock_decimal_places'))->default(1);
+            $table->decimal(
+                'step',
+                config('ecommerce.migration.product_stock_table.stock_decimal_total'),
+                config('ecommerce.migration.product_stock_table.stock_decimal_places')
+            )->default(1);
 
             $table->string('name');
             $table->string('slug')->unique();

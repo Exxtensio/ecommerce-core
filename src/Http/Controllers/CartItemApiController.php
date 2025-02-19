@@ -15,6 +15,13 @@ class CartItemApiController extends Controller
      */
     public function store(Requests\CartItem\StoreCartItemRequest $request): JsonResponse
     {
+        $productId = app('ecommerce')::getProductId();
+        $cartId = app('ecommerce')::getCartId();
+
+        $product = Models\Product\Product::find($request->get($productId));
+        $cart = Models\Cart::find($request->get($cartId));
+
+        $request->request->add(['price' => $product->prices->firstWhere('country', $cart->country)->price]);
         $data = Models\CartItem::firstOrCreate($request->all());
         $data = Models\CartItem::find($data->id);
 

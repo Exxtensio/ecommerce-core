@@ -15,7 +15,11 @@ return new class extends Migration
             $table->ecommercePrimary();
             $table->ecommerceRelation('product');
             $table->string('country', 3)->default(config('ecommerce.default.country'))->index();
-            $table->decimal('price', config('ecommerce.migration.product_price_table.price_decimal_total'), config('ecommerce.migration.product_price_table.price_decimal_places'));
+            $table->decimal(
+                'price',
+                config('ecommerce.migration.product_price_table.price_decimal_total'),
+                config('ecommerce.migration.product_price_table.price_decimal_places')
+            );
             $table->timestamps();
             $table->softDeletes();
         });

@@ -20,6 +20,7 @@ class CartItemResource extends JsonResource
             'id' => $this->id,
             'product' => new ProductResource($this->whenLoaded('product')),
             'quantity' => $this->quantity,
+            'price' => $this->price,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
