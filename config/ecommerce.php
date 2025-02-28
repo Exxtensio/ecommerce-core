@@ -69,7 +69,7 @@ return [
             'payment_status_default' => 'processing',
         ],
         'order_item_table' => [
-            'name' => 'orders_items'
+            'name' => 'order_items'
         ],
         'currency_table' => [
             'name' => 'currencies',
