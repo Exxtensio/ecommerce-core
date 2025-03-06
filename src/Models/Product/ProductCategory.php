@@ -13,6 +13,8 @@ class ProductCategory extends AbstractProductModel
         'description',
         'parent_id',
         'src',
+        'meta_title',
+        'meta_description',
     ];
 
     public function parent(): Relations\BelongsTo

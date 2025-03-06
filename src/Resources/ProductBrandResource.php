@@ -18,6 +18,8 @@ class ProductBrandResource extends JsonResource
             'slug' => $this->slug,
             'summary' => $this->summary,
             'description' => $this->description,
+            'meta_title' => $this->meta_title,
+            'meta_description' => $this->meta_description,
             'src' => $this->src,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -33,6 +33,8 @@ class ProductResource extends JsonResource
             'slug' => $this->slug,
             'summary' => $this->summary,
             'description' => $this->description,
+            'meta_title' => $this->meta_title,
+            'meta_description' => $this->meta_description,
             'status' => $this->status,
             'image' => $images->where('default', 1)->first()->src ?? null,
             'price' => $prices->where('country', 'US')->first()->price ?? 0,

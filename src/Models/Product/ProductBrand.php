@@ -12,6 +12,8 @@ class ProductBrand extends AbstractProductModel
         'summary',
         'description',
         'src',
+        'meta_title',
+        'meta_description',
     ];
 
     public function products(): Relations\HasMany

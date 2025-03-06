@@ -132,6 +132,8 @@ class Product extends AbstractProductModel
             'price',
             'stock',
             'image',
+            'meta_title',
+            'meta_description',
         ];
         parent::__construct($attributes);
     }

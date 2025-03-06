@@ -18,6 +18,8 @@ class ProductCategoryResource extends JsonResource
             'slug' => $this->slug,
             'summary' => $this->summary,
             'description' => $this->description,
+            'meta_title' => $this->meta_title,
+            'meta_description' => $this->meta_description,
             'parent' => $this->parent ? new self($this->parent) : null,
             'src' => $this->src,
             'created_at' => $this->created_at,
