@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('meta_title')->after('description')->nullable();
         });
 
-        Schema::table(app('ecommerce')->getOrderTable(), function (Blueprint $table) {
+        Schema::table(app('ecommerce')->getProductTable(), function (Blueprint $table) {
             $table->text('meta_description')->after('description')->nullable();
             $table->string('meta_title')->after('description')->nullable();
         });

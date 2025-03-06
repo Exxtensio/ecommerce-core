@@ -1,6 +1,6 @@
 {
     "name": "exxtensio/ecommerce-core",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "MIT",
     "description": "Exxtensio eCommerce Core is a build for Laravel 11.x which includes all the necessary for your online store backend application.",
     "type": "library",
